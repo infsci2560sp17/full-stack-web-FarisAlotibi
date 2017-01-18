@@ -8,7 +8,7 @@ TODO : Please provide a detailed project description.
 
 ## Web Site
 
-[ISCC website](https://aqueous-hollows-36295.herokuapp.com/)
+[ISCC website](https://aqueous-hollows-36295.herokuapp.com)
 
 ## Key Features
 
