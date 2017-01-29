@@ -53,6 +53,8 @@ are active will be receiving special support regarding their tickets as well as 
 
 [InfoSec Armor](https://aqueous-hollows-36295.herokuapp.com)
 
+![](https://render.bitstrips.com/v2/cpanel/10212038-241701489_2-s1-v1.png?transparent=1&palette=1)
+
 ## Key Features
 
 TODO : Please list key features of your project.
