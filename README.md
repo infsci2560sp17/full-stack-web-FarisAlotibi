@@ -1,14 +1,57 @@
-# TODO : Your Project Name
+# InfoSec Armor
 
-TODO : Please provide a detailed project description.
+
+1. What is the proposed name for your Web application?
+    - InfoSec Armor where InfoSec stands for Information Security
+    
+2. Who is the target audience for your Web application?
+    - The web application is targeting Security professionals, IT personals, Technological organizations, 
+Government Agencies, and Information Security Academics and Students who have limited time and resources 
+to obtain necessary information regarding information security guidelines and standards.
+    
+3. What problem is it intended to solve for the target audience?
+    - My website alleviates the hassle of obtaining consultation about Information Security standards, guidelines, 
+strategies, technologies, and solutions. Also, it saves much more time, effort, and cost by obtaining 
+the needed information and consultation online. There are a lot of information on the internet regarding 
+Information Security, but most of them are not provided by certified experts in the field. Having this information from a one 
+certified source is more effective. At the same time, interested users would be able to get their services 
+as well as attending Information Security courses without having to go to different site seeking their needs.
+    
+4. How will it meet the minimum project requirements?
+    - The project requirements are: users should be able to open ticket, rating tickets, review tickets, delete tickets, 
+search for previous tickets, modify tickets, share information, mark favorite tickets, create profile, and access 
+information security news and topics section. Additionally, users will be able to enroll to attend courses 
+related to Information Security. Most of website content will be for users only, so users need to create usernames and passwords, 
+and log in in order to access the content. The users’ info will be stored into my database and encrypted for 
+security purposes. Also, I will support OAuth2 authentication in case the users do not want to register his username 
+and password in my website. Moreover, users who are interested in attending courses will have to pay minimum cost. 
+Therefore, I will have two roles of users: one who paid to attend the courses and another who interested in seeking consultation 
+only. I will support PayPal for accepting users’ payment. There will be public information such as the up-to-date information 
+security topics and news. Thus, I will use RESTful services to contain data into JSON and XML formats. Finally, I will use API service that 
+provides news feeds for my website.
+
+
+5. Why is your proposed Web application unique or creative beyond simply meeting the minimum requirements?
+    - My proposed Web application is unique as there is less web applications dedicated to provide consultation 
+regarding information security without requiring fee for membership/subscription or signing contractual agreements 
+to obtain the needed services. Also, it provides a collaborative and rich web based community interested into information 
+security space. Additionally, the website will provide courses for those users who interested in learning information security. The 
+website will adapt its content to show the topics that interest the users based on their previous search or tickets. It will 
+also incentivize users who are not active by sending promotions and offers regarding the courses being offered, and those who 
+are active will be receiving special support regarding their tickets as well as certificates for attending the courses.
+
 
 ## Build status
 
 [![Build Status](https://travis-ci.org/infsci2560sp17/full-stack-web-FarisAlotibi.svg?branch=master)](https://travis-ci.org/infsci2560sp17/full-stack-web-FarisAlotibi)
 
+## Changelog
+
+[Changelog](CHANGELOG.md)
+
 ## Web Site
 
-[ISCC website](https://aqueous-hollows-36295.herokuapp.com)
+[InfoSec Armor](https://aqueous-hollows-36295.herokuapp.com)
 
 ## Key Features
 
