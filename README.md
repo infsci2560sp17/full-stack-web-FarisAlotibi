@@ -57,11 +57,10 @@ are active will be receiving special support regarding their tickets as well as 
 
 ## Key Features
 
-TODO : Please list key features of your project.
-
-* Key Feature 1
-* Key Feature 2
-* Key Feature N
+* Users have the ability to choose their ticket type and specifiy their orgnization information via the web application.
+* Users are able to submit their ticket through the website application. 
+* All tickets can be retrieved via the API as a JSON format.
+* A specific ticket can be retrieved by the identifier field via the API as a JSON format.
 
 ## Project Details
 
