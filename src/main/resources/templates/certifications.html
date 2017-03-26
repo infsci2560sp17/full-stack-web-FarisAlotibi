@@ -26,6 +26,7 @@
                     <th>Certification Type</th>
                     <th style="width:300px">Certification Organizor</th>
                     <th style="width:300px">Delete</th>
+                    <th style="width:300px">Update</th>
                 </tr>                
                 <tr data-th-each="certification : ${certifications}">
                     <td data-th-text="${certification.id}"></td>
@@ -36,6 +37,9 @@
                         <form data-th-object="${certification.id}" data-th-action="@{/certifications/delete/}+${certification.id}" data-th-method="delete" onsubmit="return confirm('Are you sure of deleting?')">
                             <input class="w3-btn w3-round w3-gray " type="submit" value="Delete Certification" /> 
                         </form>
+                    </td>
+                    <td>
+                        <a data-th-object="${certification.id}" data-th-href="@{/certificationsUpdate/update/}+${certification.id}"> Update </a>
                     </td>
                 </tr>
             </table>
@@ -76,10 +80,10 @@
         <br/>
         </div>
 
-                <hr />
+      <!--          <hr />
         <div class="w3-border">
         <strong class="w3-xlarge">Update Certification</strong><br />
-        <form data-th-action="@{/certifications/update/}+${certification.id}" name="addCertificationForm" method="put">
+        <form data-th-action="@{/certifications/update/id}" name="addCertificationForm" method="put">
             <div class="w3-row" >
                 <div class="w3-col s5" Style="margin-left:35px">
                     <em>Certification Name:</em> <input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block; margin-left:35px;" type="text" name="certificationName" /><br />
@@ -109,7 +113,7 @@
             <input class="w3-button w3-btn w3-button w3-round w3-gray" Style="margin-left:15px" type="submit" value="Request Ticket"/>
         </form>
         <br/>
-        </div>
+        </div>          -->
         <hr Style="margin-bottom:10px; margin-top:10px" /> 
         <form data-th-action="@{/logout}" method="post">
             <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Back" onclick="history.go(-1);"/>

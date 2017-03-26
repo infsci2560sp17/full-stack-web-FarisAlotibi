@@ -49,18 +49,18 @@ public class CertificationController {
         return new ModelAndView("redirect:/certifications");
     }
 
-    @RequestMapping(value = "certifications/update/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "certificationsUpdate/update/{id}", method = RequestMethod.GET)
     public ModelAndView getRecord(@PathVariable("id") Long id) {
   
         Certification certification = repository.findById(id);
-        ModelAndView modelAndView = new ModelAndView("certifications");
+        ModelAndView modelAndView = new ModelAndView("certificationsUpdate");
         modelAndView.addObject("certification", certification);
         return modelAndView;
     }
 
-    @RequestMapping(value = "certifications/update/{id}" , method =  RequestMethod.PUT)
+    @RequestMapping(value = "certificationsUpdate/update/{id}" , method =  RequestMethod.PUT)
     public ModelAndView create(@PathVariable("id") Long id, @ModelAttribute @Valid Certification certification, BindingResult result) {
-        repository.save(infoArm);
+        repository.save(certification);
         return new ModelAndView("redirect:/certifications"); // inforArms template name
     }
 }

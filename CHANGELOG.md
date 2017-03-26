@@ -27,17 +27,22 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
         - CourseController
         - FileUploadController
         - ProfileController
-    - Three MVC Pages were created and wired to my Repositories beside the previous one
+    - Six MVC Pages were created and wired to my Repositories beside the previous one
         - Certifications
+        - certificationsUpdate
         - Profiles
         - Courses
+        - Ajax/course
+        - infoArmsUpdate
     - README.md was modified to reflect the most important summary changes
         - Key Features
         - Screenshots
+    - SecurityApplicationInitilizor was implemented
     - Storage services were implemented for uploading files
     - InfoArms page style was modified using CSS and external formating library
     - Login page style was modified using CSS and external formating library
     - JavaScript was used in the Login page
+    - Ajax validation was implemented
 
 ## [v1.3] - 2017-02-18
 ### Added

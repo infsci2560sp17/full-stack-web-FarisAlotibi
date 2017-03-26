@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
 
 /**
  *
@@ -32,6 +34,16 @@ public class CourseService {
     public ResponseEntity<Iterable<Course>> list() {
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(repository.findAll(), headers, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/course", method = RequestMethod.GET)
+    public ModelAndView course() {
+
+        Course course = repository.findById(7L);
+        ModelAndView modelAndView = new ModelAndView("Ajax/course");
+        modelAndView.addObject("course", course);
+        return modelAndView;
+        // return new ModelAndView("Ajax/course", "course", course);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")

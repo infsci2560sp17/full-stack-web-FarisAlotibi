@@ -50,16 +50,16 @@ public class InfoArmController {
         return new ModelAndView("redirect:/infoArms");
     }
 
-    @RequestMapping(value = "infoArms/update/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "infoArmsUpdate/update/{id}", method = RequestMethod.GET)
     public ModelAndView getRecord(@PathVariable("id") Long id) {
   
         InfoArm infoArm = repository.findById(id);
-        ModelAndView modelAndView = new ModelAndView("infoArms");
+        ModelAndView modelAndView = new ModelAndView("infoArmsUpdate");
         modelAndView.addObject("infoArm", infoArm);
         return modelAndView;
     }
 
-    @RequestMapping(value = "infoArms/update/{id}" , method =  RequestMethod.PUT)
+    @RequestMapping(value = "infoArmsUpdate/update/{id}" , method =  RequestMethod.PUT)
     public ModelAndView create(@PathVariable("id") Long id, @ModelAttribute @Valid InfoArm infoArm, BindingResult result) {
         repository.save(infoArm);
         return new ModelAndView("redirect:/infoArms"); // inforArms template name

@@ -65,6 +65,8 @@ are active will be receiving special support regarding their tickets as well as 
 * Users are able to upload and follow courses through the website.
 * Users are able to add their information.
 * Users are able to upload their resumes.
+* Users are able to add, delete, view, modify certifications they are interested in.
+* Users are able to use Ajax for Validation
 
 ## Project Details
 
@@ -75,7 +77,7 @@ Users will be to log in using the login page as depicted in the following screen
 
 ### User Input Form
 
-Users will be able to add tickets, delete tickets, and modify tickets via the input form as shown in the follwoing screen shot:
+Users will be able to add, delete, view, and modify tickets and certifications via the input forms as shown in the follwoing screen shot:
 ![](https://ibb.co/m42btv)
 
 ![](https://ibb.co/eMKZfa)

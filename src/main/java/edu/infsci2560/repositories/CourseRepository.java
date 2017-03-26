@@ -7,4 +7,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  *
  * @author faris
  */
-public interface CourseRepository extends PagingAndSortingRepository<Course, Long> {}
+public interface CourseRepository extends PagingAndSortingRepository<Course, Long> {
+
+
+     Course findById(Long id);
+}
