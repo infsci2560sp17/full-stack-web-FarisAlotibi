@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *
@@ -38,6 +39,30 @@ public class InfoArmController {
     public ModelAndView create(@ModelAttribute @Valid InfoArm infoArm, BindingResult result) {
         repository.save(infoArm);
         return new ModelAndView("infoArms", "infoArms", repository.findAll());
+    }
+
+    @RequestMapping(value = "infoArms/delete/{id}", method = RequestMethod.DELETE, consumes="application/x-www-form-urlencoded", produces = "application/json")
+    public ModelAndView delete(@PathVariable("id") Long id) {
+        // repository.delete(repository.findOne(id));
+        // @ModelAttribute;
+        repository.deleteById(id);
+        // return new ModelAndView("infoArms", "infoArms", repository.findAll());
+        return new ModelAndView("redirect:/infoArms");
+    }
+
+    @RequestMapping(value = "infoArms/update/{id}", method = RequestMethod.GET)
+    public ModelAndView getRecord(@PathVariable("id") Long id) {
+  
+        InfoArm infoArm = repository.findById(id);
+        ModelAndView modelAndView = new ModelAndView("infoArms");
+        modelAndView.addObject("infoArm", infoArm);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "infoArms/update/{id}" , method =  RequestMethod.PUT)
+    public ModelAndView create(@PathVariable("id") Long id, @ModelAttribute @Valid InfoArm infoArm, BindingResult result) {
+        repository.save(infoArm);
+        return new ModelAndView("redirect:/infoArms"); // inforArms template name
     }
     
 }

@@ -7,6 +7,38 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 - To Be Determined.
 
+## [v1.4] - 2017-03-25
+### Added
+- The following developments were performed in the project
+    - Three entities were created besides the previous two: 
+        - Certification
+        - Course
+        - Profile
+    - Three Repositories were created beside the previous one: 
+        - CertificationRepository
+        - CourseRepository
+        - ProfileRepository
+    - Three RESTful web service were created and JSONs were returned beside the previous one
+        - CertificationService
+        - CourseService
+        - ProfileService
+    - Four MVC Controllers were created and get, post, delete, and put methods were implemented beside the previous one
+        - CertificationController
+        - CourseController
+        - FileUploadController
+        - ProfileController
+    - Three MVC Pages were created and wired to my Repositories beside the previous one
+        - Certifications
+        - Profiles
+        - Courses
+    - README.md was modified to reflect the most important summary changes
+        - Key Features
+        - Screenshots
+    - Storage services were implemented for uploading files
+    - InfoArms page style was modified using CSS and external formating library
+    - Login page style was modified using CSS and external formating library
+    - JavaScript was used in the Login page
+
 ## [v1.3] - 2017-02-18
 ### Added
 - The following developments were performed in the project

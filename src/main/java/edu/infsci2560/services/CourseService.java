@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.infsci2560.services;
 
-import edu.infsci2560.models.InfoArm;
-import edu.infsci2560.models.InfoArm.TicketType;
-import edu.infsci2560.repositories.InfoArmRepository;
+import edu.infsci2560.models.Course;
+import edu.infsci2560.repositories.CourseRepository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,34 +19,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
- * @author kolobj
+ * @author faris
  */
 @RestController
-@RequestMapping("/public/api/infoArms")
-public class InfoArmService {
+@RequestMapping("/public/api/courses")
+public class CourseService {
 
     @Autowired
-    private InfoArmRepository repository;
+    private CourseRepository repository;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<Iterable<InfoArm>> list() {
+    public ResponseEntity<Iterable<Course>> list() {
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(repository.findAll(), headers, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<InfoArm> list(@PathVariable("id") Long id) {
+    public ResponseEntity<Course> list(@PathVariable("id") Long id) {
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(repository.findOne(id), headers, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes="application/json", produces = "application/json")
-    public ResponseEntity<InfoArm> create(@RequestBody InfoArm infoArm) {
+    public ResponseEntity<Course> create(@RequestBody Course course) {
         HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(repository.save(infoArm), headers, HttpStatus.OK);
-    }
-    @RequestMapping(method = RequestMethod.DELETE, consumes="application/json", produces = "application/json")
-    public void delete(@PathVariable("id") Long id) {
-        repository.delete(repository.findOne(id));
+        return new ResponseEntity<>(repository.save(course), headers, HttpStatus.OK);
     }
 }

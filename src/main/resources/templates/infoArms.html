@@ -25,6 +25,7 @@
                     <th>Name</th>
                     <th>Ticket Type</th>
                     <th style="width:300px">Orgnization</th>
+                    <th> Delete</th>
                 </tr>                
                 <tr data-th-each="infoArm : ${infoArms}">
                     <td data-th-text="${infoArm.id}"></td>
@@ -42,6 +43,11 @@
                                 <span data-th-if="${infoArm.orgnization != null}" data-th-text="${infoArm.orgnization.orgnizationTarget}" data-th-remove="tag"></span>
                             </li>
                         </ul>
+                    </td>
+                    <td> 
+                        <form data-th-object="${infoArm.id}" data-th-action="@{/infoArms/delete/}+${infoArm.id}" data-th-method="delete" onsubmit="return confirm('Are you sure of deleting?')">
+                            <input class="w3-btn w3-round w3-gray " type="submit" value="Delete Ticket" /> 
+                        </form>
                     </td>
                 </tr>
             </table>
@@ -102,7 +108,7 @@
                         </li>
                     </ul>
                 </div>
-            <br/>      
+            <br/>  
         </div>
         <br/>
         <hr />
@@ -110,10 +116,101 @@
         </form>
         <br/>
         </div>
-        <hr Style="margin-bottom:10px; margin-top:10px" /> 
-        <form data-th-action="@{/logout}" method="post">
-            <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Sign Out"/>
+
+        <hr />
+        <div class="w3-border">
+        <strong class="w3-xlarge">Update Ticket</strong><br />
+        <form  data-th-action="@{/infoArms/update/id}" name="updateInfoArmForm" data-th-method="put">
+            <div class="w3-row" >
+                <div class="w3-col s5" Style="margin-left:35px">
+                    <em>Ticket Title:</em> <input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block;" type="text" name="ticketTitle" /><br />
+                    <br />
+                    <em>Ticket Type:</em><br />
+                    <input type="radio" name="ticketType" value="Network_Security" checked="checked" /> <span>Network Security</span><br />
+                    <input type="radio" name="ticketType" value="Software_Security" /> <span>Software Security</span><br />
+                    <input type="radio" name="ticketType" value="Hardware_Security" /> <span>Hardware Security</span><br />
+                    <input type="radio" name="ticketType" value="Information_Policy_Security" /> <span>Information Security and Policy</span><br />
+                </div>
+                <div class="w3-col s6" >
+                    <ul>
+                        <li>
+                            <em Style="margin-right:35px ">Orgnization Type:</em>
+
+                            <select Style="width:250px;" name="orgnization.orgnizationType">
+                                <option value="None" selected="selected">None</option>
+                                <option value="IT"> Information Technology</option>
+                                <option value="Militory"> Militory</option>
+                                <option value="Hospital"> Hospital</option>
+                                <option value="Industry"> Industry</option>
+                                <option value="Education"> Education</option>
+                                <option value="Petroleom Producer"> Petroleom Producer</option>
+                                <option value="Aircraft Manufacturer"> Aircraft Manufacturer</option>
+                            </select><br />
+                        </li>
+                        <li>
+                            <em Style="margin-right:10px">Number of Employee:</em>
+                            <select Style="width: 250px;" name="orgnization.numberOfEmpolyee">
+                                <option value="None" selected="selected">None</option>
+                                <option value="2000"> 2000</option>
+                                <option value="4000"> 4000</option>
+                                <option value="8000"> 8000</option>
+                                <option value="10000"> 10000</option>
+                                <option value="More than 10000"> More than 10000</option>
+                            </select><br />
+                        </li>
+
+                        <li>
+                            <em Style="margin-right:20px">Orgnization Target:</em>
+                            <select Style="width: 250px;" name="orgnization.orgnizationTarget">
+                                <option value="None" selected="selected">None</option>
+                                <option value="Goverment Workers"> Goverment Workers</option>
+                                <option value="Health Care insurance"> Health Care insurance</option>
+                                <option value="Academics"> Academics</option>
+                                <option value="Militory Personnel"> Militory Personnel</option>
+                                <option value="Different Type of Professionals"> Different Type of Professionals</option>
+                            </select><br />
+                        </li>
+                    </ul>
+                </div>
+            <br/>  
+        </div>
+        <br/>
+        <hr />
+            <input class="w3-button w3-btn w3-button w3-round w3-gray" Style="margin-left:15px" type="submit" value="Update Ticket"/>
         </form>
         <br/>
+        </div>
+        <!--<div class="w3-border">
+            <div class="w3-row" >
+                <div class="w3-col s5" Style="margin-left:5px">
+                    <strong class="w3-xlarge">Delete Ticket</strong><br />
+                    <form data-th-action="@{/infoArms/delete}" name="deleteInfoArmForm" method="delete">
+                        <div class="w3-col s2" Style="margin-left:35px">
+                            <em>Ticket ID:</em> 
+                        </div>
+                        <div class="w3-col s3" Style="margin-left:35px">
+                        <input type="text" name="id" /><br /> 
+                        </div>          
+                        <div class="w3-col s3" Style="margin-left:105px">
+                            <input class="w3-button w3-btn w3-button w3-round w3-gray" type="submit" value="Delete Ticket"/>
+                        </div>
+                    </form>
+                </div>
+            </div>-->
+        <hr Style="margin-bottom:10px; margin-top:10px" />
+        <div class="w3-row" >
+            <div class="w3-col s2" Style="margin-left:35px">
+                <form data-th-action="@{/home}" method="post">
+                    <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Back"/>
+                </form>
+            </div>
+            <div class="w3-col s2" Style="margin-left:35px"> 
+                <form data-th-action="@{/logout}" method="post">
+                    <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Sign Out"/>
+                </form>
+            </div>
+        </div>
+        <br/>
+        
     </body>
 </html>

@@ -61,16 +61,25 @@ are active will be receiving special support regarding their tickets as well as 
 * Users are able to submit their ticket through the website application. 
 * All tickets can be retrieved via the API as a JSON format.
 * A specific ticket can be retrieved by the identifier field via the API as a JSON format.
+* Users are able to modify and delete tickets.
+* Users are able to upload and follow courses through the website.
+* Users are able to add their information.
+* Users are able to upload their resumes.
 
 ## Project Details
 
 ### Landing Page
 
-TODO : please provide a description of your landing page inluding a screen shot ![](https://.../image.JPG)
+Users will be to log in using the login page as depicted in the following screen shot:
+![](https://ibb.co/kzzpDv)
 
 ### User Input Form
 
 TODO : please provide a description of at least 1 user input form including a screen shot ![](https://.../image.jpg)
+Users will be able to add tickets, delete tickets, and modify tickets via the input form as shown in the follwoing screen shot:
+![](https://ibb.co/m42btv)
+
+![](https://ibb.co/eMKZfa)
 
 ## API
 

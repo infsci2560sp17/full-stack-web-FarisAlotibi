@@ -5,9 +5,9 @@
  */
 package edu.infsci2560.services;
 
-import edu.infsci2560.models.InfoArm;
-import edu.infsci2560.models.InfoArm.TicketType;
-import edu.infsci2560.repositories.InfoArmRepository;
+import edu.infsci2560.models.Certification;
+import edu.infsci2560.models.Certification.CertificationOrgnizor;
+import edu.infsci2560.repositories.CertificationRepository;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,34 +25,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
- * @author kolobj
+ * @author faris
  */
 @RestController
-@RequestMapping("/public/api/infoArms")
-public class InfoArmService {
+@RequestMapping("/public/api/certifications")
+public class CertificationService {
 
     @Autowired
-    private InfoArmRepository repository;
+    private CertificationRepository repository;
 
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<Iterable<InfoArm>> list() {
+    public ResponseEntity<Iterable<Certification>> list() {
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(repository.findAll(), headers, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<InfoArm> list(@PathVariable("id") Long id) {
+    public ResponseEntity<Certification> list(@PathVariable("id") Long id) {
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(repository.findOne(id), headers, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, consumes="application/json", produces = "application/json")
-    public ResponseEntity<InfoArm> create(@RequestBody InfoArm infoArm) {
+    public ResponseEntity<Certification> create(@RequestBody Certification certification) {
         HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(repository.save(infoArm), headers, HttpStatus.OK);
-    }
-    @RequestMapping(method = RequestMethod.DELETE, consumes="application/json", produces = "application/json")
-    public void delete(@PathVariable("id") Long id) {
-        repository.delete(repository.findOne(id));
+        return new ResponseEntity<>(repository.save(certification), headers, HttpStatus.OK);
     }
 }

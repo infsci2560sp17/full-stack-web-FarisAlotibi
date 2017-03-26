@@ -4,18 +4,12 @@
  * and open the template in the editor.
  */
 package edu.infsci2560.repositories;
-import java.util.List;
 
-import edu.infsci2560.models.InfoArm;
+import edu.infsci2560.models.Profile;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import javax.transaction.Transactional;
 
 /**
  *
- * @author kolobj
+ * @author faris
  */
-public interface InfoArmRepository extends PagingAndSortingRepository<InfoArm, Long> {
-    @Transactional
-    public long deleteById(Long id);
-    public InfoArm findById(Long id);
-}
+public interface ProfileRepository extends PagingAndSortingRepository<Profile, Long> {}

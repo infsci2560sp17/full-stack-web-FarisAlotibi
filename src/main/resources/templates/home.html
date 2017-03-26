@@ -1,11 +1,69 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <title>Spring Security Example</title>
-    </head>
-    <body>
-        <h1>Welcome!</h1>
 
-        <p>Click <a data-th-href="@{/infoArms}">here</a> to see your Ticket Requests.</p>
-    </body>
+<head data-ng-href="@{static/Style/style.css}">
+  <title>InfoArmor</title>
+  <link rel="stylesheet" type="text/css" data-ng-href="static/Style/style.css" />
+  
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a data-th-href="@{/home}">Security<span class="logo_colour">Armor</span></a></h1>
+          <h2>Integrity. Authentication. Availability Assured.</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a data-th-href="@{/home}">Home</a></li>
+          <li><a data-th-href="@{/infoArms}">Ticket Requests</a></li>
+          <li><a data-th-href="@{/certifications}">Certifications</a></li>
+          <li><a data-th-href="@{/profiles}">Profile</a></li>
+          <li><a data-th-href="@{/courses}">Courses</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+      <div id="banner"></div>
+	  <div id="sidebar_container">
+        <div class="sidebar">
+          <div class="sidebar_top"></div>
+          <div class="sidebar_item">
+		  
+          </div>
+          <div class="sidebar_base"></div>
+        </div>
+        <div class="sidebar">
+          <div class="sidebar_top"></div>
+          <div class="sidebar_item">
+
+          </div>
+          <div class="sidebar_base"></div>
+        </div>
+        <div class="sidebar">
+          <div class="sidebar_top"></div>
+          <div class="sidebar_item">
+
+          </div>
+          <div class="sidebar_base"></div>
+        </div>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+      </div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer">
+      <p><a href="">Home</a> | <a href="">Examples</a> | <a href="">A Page</a> | <a href="">Another Page</a> | <a href="">Contact Us</a></p>
+      <p>Copyright &copy; InfoArmor </p>
+    </div>
+  </div>
+</body>
 </html>

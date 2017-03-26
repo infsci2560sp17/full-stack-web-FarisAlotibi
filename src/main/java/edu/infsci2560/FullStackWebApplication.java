@@ -10,8 +10,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import edu.infsci2560.models.Course;
+import edu.infsci2560.repositories.CourseRepository;
+import java.net.*;  
 
 @SpringBootApplication
+@ComponentScan({"edu.infsci2560"})
 public class FullStackWebApplication {
 
     private static final Logger log = LoggerFactory.getLogger(FullStackWebApplication.class);
@@ -35,6 +40,16 @@ public class FullStackWebApplication {
         orgnization = new Orgnization("Hospital", "5000", "Health Insurance", infoArm3);
         infoArm3.setOrgnization(orgnization);
         repository.save(infoArm3);
+
+        CourseRepository courseRepository = ctx.getBean(CourseRepository.class);
+        try{
+            URL link1 = new URL("https://www.youtube.com/watch?v=DoRoMLPDneo");
+            URL link2 = new URL("https://www.youtube.com/watch?v=vg9cNFPQFqM");
+            courseRepository.save(new Course(1L, "Beginner Ethical Hacking", "Good Ethical Hacking", link1));
+            courseRepository.save(new Course(2L, "Advance Ethical Hacking", "Really good start of ethical hacking", link2));
+        }catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
 
