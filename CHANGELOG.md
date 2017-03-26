@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 - To Be Determined.
 
-## [v1.4] - 2017-03-25
+## v1.4 - 2017-03-25
 ### Added
 - The following developments were performed in the project
     - Three entities were created besides the previous two: 
@@ -44,7 +44,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
     - JavaScript was used in the Login page
     - Ajax validation was implemented
 
-## [v1.3] - 2017-02-18
+## v1.3 - 2017-02-18
 ### Added
 - The following developments were performed in the project
     - Two Entities were created: 
