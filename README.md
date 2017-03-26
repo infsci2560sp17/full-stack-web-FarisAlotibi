@@ -75,7 +75,6 @@ Users will be to log in using the login page as depicted in the following screen
 
 ### User Input Form
 
-TODO : please provide a description of at least 1 user input form including a screen shot ![](https://.../image.jpg)
 Users will be able to add tickets, delete tickets, and modify tickets via the input form as shown in the follwoing screen shot:
 ![](https://ibb.co/m42btv)
 
