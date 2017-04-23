@@ -79,45 +79,45 @@ are active will be receiving special support regarding their tickets as well as 
 ### Landing Page
 
 Users will be to log in using the login page as depicted in the following screen shot:
-![](screenshots/Home.png)
+![](Screenshots/Home.png)
 
 ### User Input Form
 
 Users will be able to register as a user, add, delete, view, and modify tickets and certifications via the input forms as shown in the follwoing screen shot:
-![](screenshots/register.png)
+![](Screenshots/register.png)
 
-![](screenshots/tickets.png)
+![](Screenshots/tickets.png)
 
-![](screenshots/certification.png)
+![](Screenshots/certification.png)
 
-![](screenshots/register.png)
+![](Screenshots/register.png)
 
 Users will be able to upload files.
-![](screenshots/resume.png)
+![](Screenshots/resume.png)
 
 
 ### User View Form
 
-![](screenshots/course.png)
+![](Screenshots/course.png)
 
 ### Adminstrators Form
 
 Admin user will be able to add, delete, view, and modify users information via the forms as shown in the follwoing screen shot:
-![](screenshots/usersUpdate.png)
+![](Screenshots/usersUpdate.png)
 
-![](screenshots/usersView.png)
+![](Screenshots/usersView.png)
 
-![](screenshots/register.png)
+![](Screenshots/register.png)
 
-![](screenshots/users.png)
+![](Screenshots/users.png)
 
 ### Anonymous User Page
 
-![](screenshots/about.png)
+![](Screenshots/about.png)
 
 ## API
 
-TODO : please provide a description of at least 1 API including a sample of request data and response data in both XML and JSON format.
+This API allows retriving a specific course available via using the course ID.
 
 ### API Method 1
 
