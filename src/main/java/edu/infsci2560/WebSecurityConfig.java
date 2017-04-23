@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/", "/index", "/about", "/home",  "/login", "/registration").permitAll() // "/**"
+                .antMatchers("/", "/index", "/about.html", "/home",  "/login", "/registration").permitAll() // "/**"
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
             .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/")
                 .permitAll()
                 .and()
 
@@ -58,13 +58,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         
+        auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
         auth
 			.jdbcAuthentication()
 				.usersByUsernameQuery("select email, password, active from users where email=?")
 				.authoritiesByUsernameQuery("select u.email, ur.roles from users u inner join user_roles ur on(u.id=ur.user_id) where u.email=?")
 				.dataSource(dataSource)
 				.passwordEncoder(bCryptPasswordEncoder);
-        auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
         // auth.inMemoryAuthentication().withUser("admin").password("pass").roles("ADMIN");
     }
 }
