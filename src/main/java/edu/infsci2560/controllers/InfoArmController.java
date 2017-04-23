@@ -37,6 +37,7 @@ public class InfoArmController {
     
     @RequestMapping(value = "infoArms/add", method = RequestMethod.POST, consumes="application/x-www-form-urlencoded", produces = "application/json")
     public ModelAndView create(@ModelAttribute @Valid InfoArm infoArm, BindingResult result) {
+        // infoArm.getOrgnization().setInfoArm(infoArm);
         repository.save(infoArm);
         return new ModelAndView("infoArms", "infoArms", repository.findAll());
     }
@@ -54,6 +55,7 @@ public class InfoArmController {
     public ModelAndView getRecord(@PathVariable("id") Long id) {
   
         InfoArm infoArm = repository.findById(id);
+        // infoArm.getOrgnization().setInfoArm(infoArm);
         ModelAndView modelAndView = new ModelAndView("infoArmsUpdate");
         modelAndView.addObject("infoArm", infoArm);
         return modelAndView;

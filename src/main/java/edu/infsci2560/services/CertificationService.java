@@ -6,7 +6,7 @@
 package edu.infsci2560.services;
 
 import edu.infsci2560.models.Certification;
-import edu.infsci2560.models.Certification.CertificationOrgnizor;
+// import edu.infsci2560.models.Certification.CertificationOrgnizor;
 import edu.infsci2560.repositories.CertificationRepository;
 import java.util.ArrayList;
 import java.util.HashMap;

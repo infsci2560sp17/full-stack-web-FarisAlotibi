@@ -1,10 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+    <!--<head data-ng-href="@{static/css/style.css}">-->
+    <head>
+        <title>User Courses</title>
+        <!--<link rel="stylesheet" type="text/css" data-ng-href="static/css/style.css" />-->
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css" data-th-href="@{css/style.css}" />
+
+        <!--<link rel = "stylesheet" type = "text/css" href = "/full-stack-web-FarisAlotibi/src/main/resources/static/css/Style.css" /> -->
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
+        <style>
+            strong,em {
+                font-family:"Comic Sans MS";
+            }
+            span {
+                font-family:"cursive";
+            }
+        </style>
+    </head>
+
+    <body class="w3-container">
+        <div id="main">
+            <div id="header">
+                <div id="logo">
+                    <div id="logo_text">
+                        <!-- class="logo_colour", allows you to change the colour of the text -->
+                        <h1><a data-th-href="@{/home}">Security<span class="logo_colour">Armor</span></a></h1>
+                        <h2>Integrity. Authentication. Availability Assured.</h2>
+                    </div>
+                </div>
+                <div id="menubar">
+                    <ul id="menu">
+                        <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+                        <li ><a data-th-href="@{/home}">Home</a></li>
+                        <li><a data-th-href="@{/infoArms}">Ticket Requests</a></li>
+                        <li><a data-th-href="@{/certifications}">Certifications</a></li>
+                        <li class="selected"><a data-th-href="@{/profiles}">Resume</a></li>
+                        <li><a data-th-href="@{/courses}">Courses</a></li>
+                        <li><a data-th-href="@{/public/api/courses/course}">Ajax Validation</a></li>
+                        <li><a data-th-href="@{/about}">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="content_header"></div>
+            <div id="site_content">
+                <!--<div id="banner"></div>
+                <div id="sidebar_container">
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                </div>-->
+                <!--<div id="content">-->
+ 
+                <div>
+                    <h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>
+                    <hr />
+                    <!-- <table>
+                            <td data-th-text="${profile.userName}" type="hidden"></td>
+                        </table>-->
+                    <div class="w3-border" Style="display: none">
+                        <strong class="w3-xlarge">Update Profile</strong><br />
+                        <form data-th-action="@{/profiles/add}" name="addProfileForm" method="post">
+                            <div class="w3-row" >
+                                <div class="w3-col s5" Style="margin-left:35px" data-th-each="profile : ${profiles}">
+                                    <em>User Name:</em> <input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block;" type="text" name="userName" data-th-value="${profile.userName}" /><br />
+                                    <br />
+                                    <em>User Age:</em> <input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block;" type="text" name="userAge" data-th-value="${profile.userAge}"/><br />
+                                    <br />
+                                    <em>User Email:</em> <input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block;" type="text" name="userEmail" /><br />
+                                    <br />
+                                    <em>User Gender:</em> 
+                                    <select Style="width:250px;" name="profile.userGender">
+                                        <option value="Male" selected="selected">Male</option>
+                                        <option value="Female"> Female</option>
+                                    </select>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <em>User Picture:</em> <input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block;" type="text" name="userPicture" /><br />
+                                </div>
+                                <div class="w3-col s6" >
+
+                                </div>
+                                <br/>      
+                            </div>
+                            <br/>
+                            <hr />
+                            <input class="w3-button w3-btn w3-button w3-round w3-gray" Style="margin-left:15px" type="submit" value="Update Profile"/>
+                        </form>
+                        <br/>
+                    </div>
+                    <hr Style="margin-bottom:10px; margin-top:10px" /> 
+                    <br/>
+                    <div>
+                        <form data-th-action="@{/files}" name="uploadFileForm" method="POST" enctype="multipart/form-data" >                
+            <!--            <form data-th-action="@{/files(${_csrf.parameterName}=${_csrf.token})}" name="uploadFileForm" method="POST" enctype="multipart/form-data" >                                -->
+                            <em>User Resume:</em><input type="file" name="file" /><br />
+                            <input type="submit" value="Upload" />
+                        </form>
+                        <ul>
+                            <li data-th-each="file : ${files}">
+                                <a data-th-href="${file}" data-th-text="${file}"></a>
+                            </li>  
+                        </ul>
+                    </div>                    <br/>
+                </div>
+                <hr Style="margin-bottom:10px; margin-top:10px" />
+                <div class="w3-row" > 
+                    <div class="w3-col s2" Style="margin-left:35px">
+                        <form data-th-action="@{/home}">
+                            <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Back" onclick="history.go(-1);"/>
+                        </form>
+                    </div>
+                    <div class="w3-col s2" Style="margin-left:35px"> 
+                            <form data-th-action="@{/logout}" method="post">
+                                <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Sign Out"/>
+                            </form>
+                    </div>
+                </div>
+                <br/>
+                <!-- insert the page content here -->
+            </div>
+            <div id="content_footer"></div>
+            <div id="footer">
+                <p><a data-th-href="@{/home}">Home</a> | <a data-th-href="@{/about}">Contact Us</a></p>
+                <p>Copyright &copy; InfoArmor </p>
+            </div>
+        </div>
+    </body>
+</html>
+<!--
 <!DOCTYPE html>
 <html>
     <head>
         <title>User Home</title>
-        <!--<link rel = "stylesheet"
-             type = "text/css"
-             href = "/full-stack-web-FarisAlotibi/src/main/resources/static/css/Style.css" /> -->
              <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
         <style>
             strong,em {
@@ -18,11 +158,7 @@
     <body class="w3-container">
         <h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>
 
-        <hr />
-       <!-- <table>
-            <td data-th-text="${profile.userName}" type="hidden"></td>
-        </table>-->
-        
+        <hr />        
         <div class="w3-border">
         <strong class="w3-xlarge">Update Profile</strong><br />
         <form data-th-action="@{/profiles/add}" name="addProfileForm" method="post">
@@ -58,8 +194,11 @@
         <hr Style="margin-bottom:10px; margin-top:10px" /> 
         <br/>
         <div>
-            <form data-th-action="@{/files}" name="uploadFileForm" method="POST" enctype="multipart/form-data" >                
+            <form data-th-action="@{/files}" name="uploadFileForm" method="POST" enctype="multipart/form-data" > 
+            ############################-->
 <!--            <form data-th-action="@{/files(${_csrf.parameterName}=${_csrf.token})}" name="uploadFileForm" method="POST" enctype="multipart/form-data" >                                -->
+<!--
+############################
                 <em>User Resume:</em><input type="file" name="file" /><br />
                 <input type="submit" value="Upload" />
             </form>
@@ -70,4 +209,4 @@
             </ul>
         </div>
     </body>
-</html>
+</html>-->

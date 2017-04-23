@@ -62,25 +62,58 @@ are active will be receiving special support regarding their tickets as well as 
 * All tickets can be retrieved via the API as a JSON format.
 * A specific ticket can be retrieved by the identifier field via the API as a JSON format.
 * Users are able to modify and delete tickets.
-* Users are able to upload and follow courses through the website.
+* Users are able to view courses through the website.
 * Users are able to add their information.
 * Users are able to upload their resumes.
 * Users are able to add, delete, view, modify certifications they are interested in.
-* Users are able to use Ajax for Validation
+* Users are able to use Ajax for Validation.
+* Users are able to log in, log out, registar.
+* Anonymous users are able to view about the website.
+* Admistrators are able to do the following.
+* Admistrators are able to repond to tickets.
+* Admistrators are able to upload and follow courses through the website.
+* Admistrators are able to create, update, delete users information.
 
 ## Project Details
 
 ### Landing Page
 
 Users will be to log in using the login page as depicted in the following screen shot:
-![](https://ibb.co/kzzpDv)
+![](screenshots/Home.png)
 
 ### User Input Form
 
-Users will be able to add, delete, view, and modify tickets and certifications via the input forms as shown in the follwoing screen shot:
-![](https://ibb.co/m42btv)
+Users will be able to register as a user, add, delete, view, and modify tickets and certifications via the input forms as shown in the follwoing screen shot:
+![](screenshots/register.png)
 
-![](https://ibb.co/eMKZfa)
+![](screenshots/tickets.png)
+
+![](screenshots/certification.png)
+
+![](screenshots/register.png)
+
+Users will be able to upload files.
+![](screenshots/resume.png)
+
+
+### User View Form
+
+![](screenshots/course.png)
+
+### Adminstrators Form
+
+Admin user will be able to add, delete, view, and modify users information via the forms as shown in the follwoing screen shot:
+![](screenshots/usersUpdate.png)
+
+![](screenshots/usersView.png)
+
+![](screenshots/register.png)
+
+![](screenshots/users.png)
+
+### Anonymous User Page
+
+![](screenshots/about.png)
 
 ## API
 
@@ -88,60 +121,42 @@ TODO : please provide a description of at least 1 API including a sample of requ
 
 ### API Method 1
 
-    POST photos/:id/tags
+    GET /public/api/courses/:id
 
 #### Parameters
 
-- **id** _(required)_ — The Photo ID to add tags for.
-- **tags** _(required)_ — Comma separated tags.
+- **id** _(required)_ — The course ID to get the data associated with that ID so users can view the course content.
 
 #### Response
 
-A JSON or XMLobject containing the PhotoID and list of tags accepted.
+A JSON containing the CourseID and the data associated with it which is course name, URL, and Course description.
 
 #### Errors
 
 All known errors cause the resource to return HTTP error code header together with a JSON array containing at least 'status' and 'error' keys describing the source of error.
 
-- **404 Not Found** — The photo was not found.
+- **404 Not Found** — The course was not found.
 
 #### Example
 
 ##### Request
 
-    POST /v1/photos/123456/tags
-
-##### Body
-
-    tags=cute,puppy
-
+    GET /public/api/courses/1
 
 ##### JSON Response
 
 ```json
 {
-    "photoId": 123456,
-    "tags": ["cute", "puppy"]
+    "id":1,"courseName":"Beginner Ethical Hacking","courseLink":"https://www.youtube.com/embed/DoRoMLPDneo","courseDescription":"Good Ethical Hacking"
 }
-```
-
-##### XML Response
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<PhotoTags>
-    <photoId>123456</PhotoId>
-        <tags>
-            <tag>cute</tag>
-            <tag>puppy</tag>
-        </tags>
-</PhotoTags>
 ```
 
 ## Technologies Used
 
-TODO : List all technologies used in your project
-
 - [Spring Boot](https://projects.spring.io/spring-boot/) - Takes an opinionated view of building production-ready Spring applications.
+- [JQuery](https://jquery.com/) - jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML.
+- [jQuery Validation Plugin](https://jqueryvalidation.org/) - jQuery Validation Plugin is a feature rich jQuery plugin that makes it easy to validate user input while keeping your HTML markup clean from javascript code.
+- [W3.CSS](https://www.w3schools.com/w3css/) - W3.CSS is a modern CSS framework with built-in responsiveness.
 - [Thymleaf](http://www.thymeleaf.org/) - Thymeleaf is a modern server-side Java template engine for both web and standalone environments.
 - [Maven](https://maven.apache.org/) - Apache Maven is a software project management and comprehension tool.
+

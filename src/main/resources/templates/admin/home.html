@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+
+<!--<head data-ng-href="@{static/css/style.css}">-->
+<head>
+  <title>InfoArmor</title>
+  <!--<link rel="stylesheet" type="text/css" data-ng-href="static/css/style.css" />-->
+  <link rel="stylesheet" type="text/css" href="../../static/css/style.css" data-th-href="@{../../css/style.css}" />
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a data-th-href="@{/home}">Security<span class="logo_colour">Armor</span></a></h1>
+          <h2>Integrity. Authentication. Availability Assured.</h2>
+        </div>
+      </div>
+      <div id="menubar" class="admin">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a data-th-href="@{/home}">Home</a></li>
+          <li><a data-th-href="@{/registration}">Registration</a></li>
+          <li><a data-th-href="@{/users}" data-th-if="${isAdmin}">Users Management</a> </li>
+          <li><a data-th-href="@{/infoArms}">Ticket Requests</a></li>
+          <li><a data-th-href="@{/certifications}">Certifications</a></li>
+          <li><a data-th-href="@{/profiles}">Resume</a></li>
+          <li><a data-th-href="@{/courses}">Courses</a></li>
+          <li><a data-th-href="@{/public/api/courses/course}">Ajax Validation</a></li>
+          <li><a data-th-href="@{/about}">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+      <div id="banner1">
+        <!--<h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>-->
+        <!--<h1 data-th-inline="text" style="display:none;" value="${#httpServletRequest.remoteUser}">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>-->
+        <img Style="width: 900px; height: 150px;" src="http://www.worcester.edu/uploadedImages/Website_Assets/Images/UTS/ISA/ISA_banner.jpg?n=7959" />
+      </div>
+	    <!--<div id="sidebar_container">
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+        </div>-->
+      <div id="content">
+        <!-- insert the page content here -->
+
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      </div>
+    </div>
+    <div id="content_footer"></div>
+    <div class ="main" id="footer">
+      <p><a href="">Home</a> | <a href="">Examples</a> | <a href="">A Page</a> | <a href="">Another Page</a> | <a href="">Contact Us</a></p>
+      <p>Copyright &copy; InfoArmor </p>
+    </div>
+  </div>
+</body>
+</html>

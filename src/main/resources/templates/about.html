@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<!--<head data-ng-href="@{static/css/style.css}">-->
+<head>
+  <title>About InfoArmor</title>
+  <!--<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--<link rel="stylesheet" type="text/css" data-ng-href="static/css/style.css" />-->
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" data-th-href="@{css/style.css}" />
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a data-th-href="@{/home}">Security<span class="logo_colour">Armor</span></a></h1>
+          <h2>Integrity. Authentication. Availability Assured.</h2>
+        </div>
+      </div>
+      <div id="menubar" class="about">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a data-th-href="@{/home}">Home</a></li>
+          <li><a data-th-href="@{/infoArms}">Ticket Requests</a></li>
+          <li><a data-th-href="@{/certifications}">Certifications</a></li>
+          <li><a data-th-href="@{/profiles}">Resume</a></li>
+          <li><a data-th-href="@{/courses}">Courses</a></li>
+          <!--<li><a data-th-href="@{/public/api/courses/course}">Ajax Validation</a></li>-->
+          <!--<li class="selected"><a href="about.html">About Us</a></li>-->
+          <li class="selected"><a data-th-href="@{/about}">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+      <div id="banner1">
+        <div class="w3-panel w3-leftbar w3-sand w3-large w3-serif">
+          <p><i>Security Armor</i></p>
+        </div>
+        <ul class="w3-ul w3-hoverable">
+          <li style="font-family: Comic Sans MS, cursive, sans-serif;" >Non-profitable website that aims to give security professionals to seek counsultation by submitting tickets regarding security issues.</li>
+          <li style="font-family: Comic Sans MS, cursive, sans-serif;" >It gives users the ability to seek certification</li>
+          <li style="font-family: Comic Sans MS, cursive, sans-serif;" >It also provides users with certain courses that they can watch.</li>
+        </ul>
+
+        <div class="w3-panel w3-leftbar w3-sand w3-large w3-serif">
+          <p><i>Security Armor Staff</i></p>
+        </div>
+        <img Style="width: 200px; height: 200px; margin-left: 295px" src="https://camo.githubusercontent.com/d1d85bb92e9b16d278b8e108e4a4f41ee22302cc/68747470733a2f2f72656e6465722e6269747374726970732e636f6d2f76322f6370616e656c2f31303231323033382d3234313730313438395f322d73312d76312e706e673f7472616e73706172656e743d312670616c657474653d31" />
+        <ul class="w3-ul w3-hoverable">
+          <li style="font-family: Comic Sans MS, cursive, sans-serif;" ><strong>Name:</strong><em> Faris</em> </li>
+          <li style="font-family: Comic Sans MS, cursive, sans-serif;" ><strong>Occupation:</strong> <em>Founder and Information Security Officer</em></li>
+          <li style="font-family: Comic Sans MS, cursive, sans-serif;" ><em>For any feedback information and questions, please contact us! </em></li>
+        </ul>
+
+      </div>
+	  <div id="sidebar_container">
+        <div class="sidebar">
+          <div class="sidebar_top"><strong Style="margin-left: 25px;"><em>Contact Information</em></strong></div>
+          <div class="sidebar_item"></div>
+          <div class="sidebar_base"></div>
+        </div>
+        <div class="sidebar">
+          <div class="sidebar_top"><strong Style="margin-left: 10px;"> Email:</strong> abc@gmail.com</div>
+          <div class="sidebar_item"></div>
+          <div class="sidebar_base"></div>
+        </div>
+        <div class="sidebar">
+          <div class="sidebar_top"><strong Style="margin-left: 10px;"> Phone:</strong> 1234567890</div>
+          <div class="sidebar_item"></div>
+          <div class="sidebar_base"></div>
+        </div>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+      </div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer" >
+      <p><a data-th-href="@{/home}">Home</a> | <a data-th-href="@{/about}">Contact Us</a></p>
+      <p>Copyright &copy; InfoArmor </p>
+    </div>
+  </div>
+</body>
+</html>
+

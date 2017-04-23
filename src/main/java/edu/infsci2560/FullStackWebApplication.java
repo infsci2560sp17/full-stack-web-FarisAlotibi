@@ -1,19 +1,34 @@
 package edu.infsci2560;
 
 import edu.infsci2560.models.InfoArm;
-import edu.infsci2560.models.InfoArm.TicketType;
+// import edu.infsci2560.models.InfoArm.TicketType;
 import edu.infsci2560.repositories.InfoArmRepository;
 import edu.infsci2560.models.Orgnization;
+import edu.infsci2560.models.Course;
+import edu.infsci2560.repositories.CourseRepository;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import edu.infsci2560.models.Course;
-import edu.infsci2560.repositories.CourseRepository;
-import java.net.*;  
+
+import java.net.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
+
+import edu.infsci2560.models.User;
+import edu.infsci2560.models.User.Gender;
+import edu.infsci2560.models.User.Role;
+import edu.infsci2560.repositories.UserRepository;
+import edu.infsci2560.services.UserServiceImp;
 
 @SpringBootApplication
 @ComponentScan({"edu.infsci2560"})
@@ -26,30 +41,57 @@ public class FullStackWebApplication {
 
         InfoArmRepository repository = ctx.getBean(InfoArmRepository.class);
 
-        InfoArm infoArm1 = new InfoArm("install firewall", TicketType.Network_Security);
+        // InfoArm infoArm1 = new InfoArm("install firewall", TicketType.Network_Security);
+        InfoArm infoArm1 = new InfoArm("install firewall", "Network Security", "We recommend to install modern firwall");
         Orgnization orgnization = new Orgnization("IT", "2000", "Industry Professionals", infoArm1);
         infoArm1.setOrgnization(orgnization);
         repository.save(infoArm1);
 
-        InfoArm infoArm2 = new InfoArm("Batch the bugs", TicketType.Software_Security);
+        // InfoArm infoArm2 = new InfoArm("Batch the bugs", TicketType.Software_Security);
+        InfoArm infoArm2 = new InfoArm("Batch the bugs", "Software Security", "Not yet");
         orgnization = new Orgnization("Military", "10000", "Goverment", infoArm2);
         infoArm2.setOrgnization(orgnization);
         repository.save(infoArm2);
 
-        InfoArm infoArm3 = new InfoArm("Update PLC", TicketType.Hardware_Security);
+        // InfoArm infoArm3 = new InfoArm("Update PLC", TicketType.Hardware_Security);
+        InfoArm infoArm3 = new InfoArm("Update PLC", "Hardware Security", "Not yet");
         orgnization = new Orgnization("Hospital", "5000", "Health Insurance", infoArm3);
         infoArm3.setOrgnization(orgnization);
         repository.save(infoArm3);
 
         CourseRepository courseRepository = ctx.getBean(CourseRepository.class);
         try{
-            URL link1 = new URL("https://www.youtube.com/watch?v=DoRoMLPDneo");
-            URL link2 = new URL("https://www.youtube.com/watch?v=vg9cNFPQFqM");
+            URL link1 = new URL("https://www.youtube.com/embed/DoRoMLPDneo");
+            // URL link1 = new URL("DoRoMLPDneo");
+            // URL link2 = new URL("https://www.youtube.com/watch?v=vg9cNFPQFqM");
+            URL link2 = new URL("https://www.youtube.com/embed/vg9cNFPQFqM");
+            // String link1 ="https://www.youtube.com/embed/DoRoMLPDneo";
+            // String link2 ="https://www.youtube.com/embed/vg9cNFPQFqM";
             courseRepository.save(new Course(1L, "Beginner Ethical Hacking", "Good Ethical Hacking", link1));
             courseRepository.save(new Course(2L, "Advance Ethical Hacking", "Really good start of ethical hacking", link2));
         }catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
+        UserRepository userRepository = ctx.getBean(UserRepository.class);
+        UserServiceImp userService = ctx.getBean(UserServiceImp.class);
+
+        User user1 = new User("Faris", "Pitt", Gender.Male, "user", "password");
+        userService.saveUser(user1, new ArrayList<Role>(){
+            {
+                add(Role.ADMIN);
+                add(Role.USER);
+            }
+        });
+
+        User user2 = new User("FOA5", "Pitt", Gender.Female, "user1", "password1");
+        userService.saveUser(user2, new ArrayList<Role>(){
+            {
+                add(Role.USER);
+            }
+        });
+
+        log.info("\n ****************************************[Insertion of data is done] **********************************");
     }
 
 

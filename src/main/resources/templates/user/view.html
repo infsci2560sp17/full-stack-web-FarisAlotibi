@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>User Profile</title>
+    <!--<link rel="stylesheet" type="text/css" data-ng-href="static/css/style.css" />-->
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" data-th-href="@{../../css/style.css}" />
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/lib/w3.css" />
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <style>
+        .inline-input { display: inline-block; width: auto; }
+    </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a data-th-href="@{/home}">Security<span class="logo_colour">Armor</span></a></h1>
+          <h2>Integrity. Authentication. Availability Assured.</h2>
+        </div>
+      </div>
+      <div id="menubar" class="userProfile">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a data-th-href="@{/home}">Home</a></li>
+          <li><a data-th-href="@{/registration}">Registration</a></li>
+          <li class="selected"><a data-th-href="@{/users}">Users Management</a></li>
+          <!--<li><a data-th-href="@{/infoArms}">Ticket Requests</a></li>-->
+          <!--<li><a data-th-href="@{/certifications}">Certifications</a></li>-->
+          <!--<li><a data-th-href="@{/profiles}">Profile</a></li>-->
+          <!--<li><a data-th-href="@{/courses}">Courses</a></li>-->
+          <!--<li><a data-th-href="@{/public/api/courses/course}">Ajax Validation</a></li>-->
+          <!--<li><a data-th-href="@{/about}">About Us</a></li>-->
+          <li><a data-th-href="@{/logout}">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+      <div id="banner1">
+        <!--<h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>-->
+        <!--<h1 data-th-inline="text" style="display:none;" value="${#httpServletRequest.remoteUser}">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>-->
+        <img Style="width: 900px; height: 150px;" src="http://www.worcester.edu/uploadedImages/Website_Assets/Images/UTS/ISA/ISA_banner.jpg?n=7959" />
+      </div>
+        <!--<div id="sidebar_container">
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+        </div>-->
+      <div id="content-X">
+        <div class="w3-container">
+            <h1><span data-th-text="${user.firstName}" data-th-remove="tag">First Name</span>'s Profile</h1>
+
+            <table class="w3-table-all w3-hoverable" style="border: 3px solid">
+                <tr class="w3-hover-light-blue">
+                    <th class="w3-dark-gray" style="width: 25%">ID</th>
+                    <td data-th-text="${user.id}"></td>
+                </tr>
+                <tr class="w3-hover-light-blue">
+                    <th class="w3-dark-gray">First Name</th>
+                    <td data-th-text="${user.firstName}"></td>
+                </tr>
+                <tr class="w3-hover-light-blue">
+                    <th class="w3-dark-gray">Last Name</th>
+                    <td data-th-text="${user.lastName}"></td>
+                </tr>
+                <tr class="w3-hover-light-blue">
+                    <th class="w3-dark-gray">Gender</th>
+                    <td data-th-text="${user.gender}"></td>
+                </tr>
+                <tr class="w3-hover-light-blue">
+                    <th class="w3-dark-gray">Email</th>
+                    <td data-th-text="${user.email}"></td>
+                </tr>
+                <tr class="w3-hover-light-blue">
+                    <th class="w3-dark-gray">Password</th>
+                    <td data-th-text="${user.password}"></td>
+                </tr>
+                <tr class="w3-hover-light-blue">
+                    <th class="w3-dark-gray">Active</th>
+                    <td data-th-text="${user.active}"></td>
+                </tr>
+                <tr class="w3-hover-light-blue">
+                    <th class="w3-dark-gray">Role(s)</th>
+                    <td>
+                        <ul> 
+                            <li data-th-each="role : ${user.roles}" data-th-text="${role}"></li>
+                        </ul>
+                    </td>
+                </tr>                
+                <tr>
+                    <td></td>
+                    <td>
+                        <a data-th-href="@{|/users/update/${user.id}|}" class="w3-btn w3-round" Style="background-color: dodgerblue " ><i class="fa fa-edit"></i> Submit</a>
+                        <form data-th-object="${user}" data-th-action="@{/users/delete/} + ${user.id}" data-th-method="delete" class="inline-input" onsubmit="return confirm('This user will be permanently deleted and cannot be recovered. Are you sure?')">
+                            <button class="button w3-btn w3-round" Style="background-color: firebrick " type="submit" value="Submit"><i class="fa fa-close "></i> Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+            
+            <hr />
+            <div class="w3-col s2" Style="margin-left:35px"> 
+                <form data-th-action="@{/logout}" method="post">
+                    <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Sign Out"/>
+                </form>
+            </div>
+        </div>
+
+        <!-- insert the page content here -->
+      </div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer" >
+      <p><a href="">Home</a> | <a href="">Examples</a> | <a href="">A Page</a> | <a href="">Another Page</a> | <a href="">Contact Us</a></p>
+      <p>Copyright &copy; InfoArmor </p>
+    </div>
+  </div>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Profile</title>
+        <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/lib/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <style>
+            .inline-input { display: inline-block; width: auto; }
+        </style>
+    </head>
+    <body class="w3-container">
+        <h1><span data-th-text="${user.lastName}" data-th-remove="tag">Last Name</span>'s Profile</h1>
+
+        <table class="w3-table-all w3-hoverable">
+            <tr>
+                <th class="w3-teal" style="width: 25%">ID</th>
+                <td data-th-text="${user.id}"></td>
+            </tr>
+            <tr>
+                <th class="w3-teal">First Name</th>
+                <td data-th-text="${user.firstName}"></td>
+            </tr>
+            <tr>
+                <th class="w3-teal">Last Name</th>
+                <td data-th-text="${user.lastName}"></td>
+            </tr>
+            <tr>
+                <th class="w3-teal">Gender</th>
+                <td data-th-text="${user.gender}"></td>
+            </tr>
+            <tr>
+                <th class="w3-teal">Email</th>
+                <td data-th-text="${user.email}"></td>
+            </tr>
+            <tr>
+                <th class="w3-teal">Password</th>
+                <td data-th-text="${user.password}"></td>
+            </tr>
+            <tr>
+                <th class="w3-teal">Active</th>
+                <td data-th-text="${user.active}"></td>
+            </tr>
+            <tr>
+                <th class="w3-teal">Role(s)</th>
+                <td>
+                    <ul> 
+                        <li data-th-each="role : ${user.roles}" data-th-text="${role}"></li>
+                    </ul>
+                </td>
+            </tr>                
+            <tr>
+                <td></td>
+                <td>
+                    <a data-th-href="@{|/users/update/${user.id}|}" class="w3-btn w3-blue"><i class="material-icons">edit</i> Update</a>
+                    <form data-th-object="${user}" data-th-action="@{/users/delete/} + ${user.id}" data-th-method="delete" class="inline-input" onsubmit="return confirm('This user will be permanently deleted and cannot be recovered. Are you sure?')">
+                        <button class="button w3-btn w3-red" type="submit" value="Submit"><i class="material-icons">delete</i> Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        
+        <hr />
+        <form data-th-action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+        <hr />
+    </body>
+</html>-->

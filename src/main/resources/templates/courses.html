@@ -1,11 +1,206 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html>
+    <!--<head data-ng-href="@{static/css/style.css}">-->
+    <head>
+        <title>User Courses</title>
+        <!--<link rel="stylesheet" type="text/css" data-ng-href="static/css/style.css" />-->
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css" data-th-href="@{../css/style.css}" />
+
+        <!--<link rel = "stylesheet" type = "text/css" href = "/full-stack-web-FarisAlotibi/src/main/resources/static/css/Style.css" /> -->
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <style>
+            strong,em {
+                font-family:"Comic Sans MS";
+            }
+            span {
+                font-family:"cursive";
+            }
+        </style>
+        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js">
+            // $("input[name=test]").val(function(index, value) {
+            // return value.replace('watch?v=', 'embed/');
+            // });
+
+            // $("test").val(function(index, value) {
+            // return value.replace('watch?v=', 'embed/');
+            // });
+            var value = $("#test").val()+"";
+            value.replace("watch?v=", "embed/");
+            // var val = $("#test").val();
+            $("#test").val(value);
+
+            // $('#test').val($('#test').val().replace("watch?v=","embed/"))
+
+            // $('#form').submit(function() {
+            //     $('#link').val($('#link').val().replace("watch?v=","embed/"));
+            // });
+
+            // $('#form').submit(function(event) {
+            //     event.preventDefault(); //this will prevent the default submit
+            //     // your code here
+            //     $("test").val(function(index, value) {
+            //     return value.replace('watch?v=', 'embed/');
+            //     });
+            //     $(this).unbind('submit').submit(); // continue the submit unbind preventDefault
+            // })
+
+            // var code = document.getElementById("test").value
+            // general.innerHTML = general.innerHTML.replace('watch?v=', ch);
+        </script>-->
+        <script>
+        function myFunction() {
+            var x = document.getElementById('add');
+            if (x.style.display === 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }
+        </script>
+    </head>
+
+    <body class="w3-container">
+        <div id="main">
+            <div id="header">
+                <div id="logo">
+                    <div id="logo_text">
+                        <!-- class="logo_colour", allows you to change the colour of the text -->
+                        <h1><a data-th-href="@{/home}">Security<span class="logo_colour">Armor</span></a></h1>
+                        <h2>Integrity. Authentication. Availability Assured.</h2>
+                    </div>
+                </div>
+                <div id="menubar">
+                    <ul id="menu">
+                        <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+                        <li ><a data-th-href="@{/home}">Home</a></li>
+                        <li><a data-th-href="@{/infoArms}">Ticket Requests</a></li>
+                        <li><a data-th-href="@{/certifications}">Certifications</a></li>
+                        <li><a data-th-href="@{/profiles}">Resume</a></li>
+                        <li class="selected"><a data-th-href="@{/courses}">Courses</a></li>
+                        <li><a data-th-href="@{/public/api/courses/course}">Ajax Validation</a></li>
+                        <li><a data-th-href="@{/about}">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="content_header"></div>
+            <div id="site_content">
+                <!--<div id="banner"></div>
+                <div id="sidebar_container">
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                </div>-->
+                <!--<div id="content">-->
+ 
+                <div>
+                    <h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>
+                    <table class=" w3-table-all w3-table w3-striped w3-hoverable" style="border: 3px solid #666666">
+                        <tr class="w3-dark-gray">
+                            <th>ID</th>
+                            <th>Course Name</th>
+                            <th>Course Description</th>
+                            <!--<th style="width:300px">Course Link</th>-->
+                            <th style="width:400px">Course Video</th>
+                            <th style="width:300px" data-th-if="${isAdmin}">Delete</th>
+                            <th style="width:300px" data-th-if="${isAdmin}">Update</th>
+                        </tr>                
+                        <tr data-th-each="course : ${courses}">
+                            <td data-th-text="${course.id}"></td>
+                            <td data-th-text="${course.courseName}"></td>
+                            <td data-th-text="${course.courseDescription}"></td>
+                            <!--<td data-th-text="${course.courseLink}"></td>-->
+                            <td>
+                                <iframe width="420" height="315"
+                                    data-th-src="@{${course.courseLink}}">
+                                </iframe>
+                            </td>
+                            <!--data-th-src="@{https://www.youtube.com/embed/{url} (url=${course.courseLink})}">-->
+                            <td data-th-if="${isAdmin}" style="vertical-align: middle;"> 
+                                <form data-th-object="${course.id}" data-th-action="@{/courses/delete/}+${course.id}" data-th-method="delete" class="inline-block" onsubmit="return confirm('Are you sure of deleting?')">
+                                    <!--<input class="w3-btn w3-round w3-gray " type="submit" value="Delete" />-->
+                                    <button class=" button w3-light-gray" type="submit" ><i class="fa fa-close w3-xlarge"></i></button> 
+                                </form>
+                            </td>
+                            <td data-th-if="${isAdmin}" style="vertical-align: middle;">
+                                <!--<button class="w3-btn w3-round w3-gray " type="button"><a data-th-object="${course.id}" data-th-href="@{/coursesUpdate/update/}+${course.id}"> Update </a></button>-->
+                                <a data-th-object="${course.id}" data-th-href="@{/coursesUpdate/update/}+${course.id}"><i class="fa fa-edit w3-xlarge "></i></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <hr />
+                <button class="w3-button w3-btn w3-button w3-round w3-gray" onclick="myFunction()" data-th-if="${isAdmin}">Show/Hide The Form</button>
+                <div Style="margin-top:18px; display: none;" id="add" class="w3-border">
+                    <strong class="w3-xlarge">Add Course</strong><br />
+                    <form data-th-action="@{/courses/add}" name="addCourseForm" method="post" id ="form">
+                        <div class="w3-row" >
+                            <div class="w3-col s6" Style="margin-left:35px;">
+                                <em Style="margin-right:38px; ">Course Name:</em>
+                                <select class="w3-select w3-border w3-round w3-padding-0" Style="width:205px;" name="courseName">
+                                    <option value="Other" selected="selected">Other</option>
+                                    <option value="Ethical Hacking"> Ethical Hacking</option>
+                                    <option value="Pentesting"> Pentesting</option>
+                                </select><br />
+                                <br />
+                                <em >Course Description:</em> <!--<input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block;" type="text" name="courseDescription" required/>-->
+                                <textarea Style="margin-top:8px; width:350px;" class="w3-input w3-border w3-round w3-padding-0" rows="4" cols="50" name="courseDescription" type="text" required=""></textarea><br />
+                                <br />
+                            </div>
+                            <div class="w3-col s5" >
+                                <em Style="margin-right:38px; margin-left:18px;">Course Link:</em> <input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block;" type="url" id="link" name="courseLink" required=""/><br />
+                            </div>
+                            <br/>      
+                        </div>
+                        <br/>
+                        <hr />
+                        <input class="w3-button w3-btn w3-button w3-round w3-gray" Style="margin-left:15px" type="submit" value="Add Course"/>
+                    </form>
+                    <br/>
+                </div>
+                <hr Style="margin-bottom:10px; margin-top:10px" />
+                <div class="w3-row" > 
+                    <div class="w3-col s2" Style="margin-left:35px">
+                        <form data-th-action="@{/home}">
+                            <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Back" onclick="history.go(-1);"/>
+                        </form>
+                    </div>
+                    <div class="w3-col s2" Style="margin-left:35px"> 
+                            <form data-th-action="@{/logout}" method="post" data-th-if="${isAuthenticated}">
+                                <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Sign Out"/>
+                            </form>
+                    </div>
+                </div>
+                <br/>
+                <!-- insert the page content here -->
+            </div>
+            <div id="content_footer"></div>
+            <div id="footer">
+                <p><a data-th-href="@{/home}">Home</a> | <a data-th-href="@{/about}">Contact Us</a></p>
+                <p>Copyright &copy; InfoArmor </p>
+            </div>
+        </div>
+    </body>
+</html>
+
+<!--<!DOCTYPE html>
 <html>
     <head>
         <title>User Home</title>
-        <!--<link rel = "stylesheet"
-             type = "text/css"
-             href = "/full-stack-web-FarisAlotibi/src/main/resources/static/css/Style.css" /> -->
-             <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
         <style>
             strong,em {
                 font-family:"Comic Sans MS";
@@ -70,4 +265,4 @@
         <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Back" onclick="history.go(-1);"/>
         <br/>
     </body>
-</html>
+</html>-->

@@ -1,11 +1,15 @@
-<!DOCTYPE html>
+<!--<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>-->
+<!DOCTYPE HTML>
 <html>
+    <!--<head data-ng-href="@{static/css/style.css}">-->
     <head>
-        <title>User Home</title>
-        <!--<link rel = "stylesheet"
-             type = "text/css"
-             href = "/full-stack-web-FarisAlotibi/src/main/resources/static/css/Style.css" /> -->
-             <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
+        <title>User Tickets</title>
+        <!--<link rel="stylesheet" type="text/css" data-ng-href="static/css/style.css" />-->
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css" data-th-href="@{../css/style.css}" />
+
+        <!--<link rel = "stylesheet" type = "text/css" href = "/full-stack-web-FarisAlotibi/src/main/resources/static/css/Style.css" /> -->
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <style>
             strong,em {
                 font-family:"Comic Sans MS";
@@ -14,144 +18,203 @@
                 font-family:"cursive";
             }
         </style>
+        <script>
+            function myFunction() {
+                var x = document.getElementById('add');
+                if (x.style.display === 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+        </script>
     </head>
+
     <body class="w3-container">
-        <h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>
-
-        <div>
-            <table class=" w3-table-all w3-table w3-striped w3-hoverable" style="border: 3px solid #666666">
-                <tr class="w3-red">
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Ticket Type</th>
-                    <th style="width:300px">Orgnization</th>
-                    <th> Delete</th>
-                    <th> Update</th>
-                </tr>                
-                <tr data-th-each="infoArm : ${infoArms}">
-                    <td data-th-text="${infoArm.id}"></td>
-                    <td data-th-text="${infoArm.ticketTitle}"></td>
-                    <td data-th-text="${infoArm.ticketType}"></td>
-                    <td>
-                        <ul>
-                            <li><em>Type:</em>
-                                <span data-th-if="${infoArm.orgnization != null}" data-th-text="${infoArm.orgnization.orgnizationType}" data-th-remove="tag"></span>
-                            </li>
-                            <li><em>Number of Employee:</em>
-                                <span data-th-if="${infoArm.orgnization != null}" data-th-text="${infoArm.orgnization.numberOfEmpolyee}" data-th-remove="tag"></span>
-                            </li>
-                            <li><em>Target: </em>
-                                <span data-th-if="${infoArm.orgnization != null}" data-th-text="${infoArm.orgnization.orgnizationTarget}" data-th-remove="tag"></span>
-                            </li>
-                        </ul>
-                    </td>
-                    <td> 
-                        <form data-th-object="${infoArm.id}" data-th-action="@{/infoArms/delete/}+${infoArm.id}" data-th-method="delete" onsubmit="return confirm('Are you sure of deleting?')">
-                            <input class="w3-btn w3-round w3-gray " type="submit" value="Delete Ticket" /> 
-                        </form>
-                    </td>
-                    <td>
-                        <a data-th-object="${infoArm.id}" data-th-href="@{/infoArmsUpdate/update/}+${infoArm.id}"> Update </a>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        
-        <hr />
-        <div class="w3-border">
-        <strong class="w3-xlarge">Add Ticket</strong><br />
-        <form data-th-action="@{/infoArms/add}" name="addInfoArmForm" method="post">
-            <div class="w3-row" >
-                <div class="w3-col s5" Style="margin-left:35px">
-                    <em>Ticket Title:</em> <input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block;" type="text" name="ticketTitle" /><br />
-                    <br />
-                    <em>Ticket Type:</em><br />
-                    <input type="radio" name="ticketType" value="Network_Security" checked="checked" /> <span>Network Security</span><br />
-                    <input type="radio" name="ticketType" value="Software_Security" /> <span>Software Security</span><br />
-                    <input type="radio" name="ticketType" value="Hardware_Security" /> <span>Hardware Security</span><br />
-                    <input type="radio" name="ticketType" value="Information_Policy_Security" /> <span>Information Security and Policy</span><br />
+        <div id="main">
+            <div id="header">
+                <div id="logo">
+                    <div id="logo_text">
+                        <!-- class="logo_colour", allows you to change the colour of the text -->
+                        <h1><a data-th-href="@{/home}">Security<span class="logo_colour">Armor</span></a></h1>
+                        <h2>Integrity. Authentication. Availability Assured.</h2>
+                    </div>
                 </div>
-                <div class="w3-col s6" >
-                    <ul>
-                        <li>
-                            <em Style="margin-right:35px ">Orgnization Type:</em>
-
-                            <select Style="width:250px;" name="orgnization.orgnizationType">
-                                <option value="None" selected="selected">None</option>
-                                <option value="IT"> Information Technology</option>
-                                <option value="Militory"> Militory</option>
-                                <option value="Hospital"> Hospital</option>
-                                <option value="Industry"> Industry</option>
-                                <option value="Education"> Education</option>
-                                <option value="Petroleom Producer"> Petroleom Producer</option>
-                                <option value="Aircraft Manufacturer"> Aircraft Manufacturer</option>
-                            </select><br />
-                        </li>
-                        <li>
-                            <em Style="margin-right:10px">Number of Employee:</em>
-                            <select Style="width: 250px;" name="orgnization.numberOfEmpolyee">
-                                <option value="None" selected="selected">None</option>
-                                <option value="2000"> 2000</option>
-                                <option value="4000"> 4000</option>
-                                <option value="8000"> 8000</option>
-                                <option value="10000"> 10000</option>
-                                <option value="More than 10000"> More than 10000</option>
-                            </select><br />
-                        </li>
-
-                        <li>
-                            <em Style="margin-right:20px">Orgnization Target:</em>
-                            <select Style="width: 250px;" name="orgnization.orgnizationTarget">
-                                <option value="None" selected="selected">None</option>
-                                <option value="Goverment Workers"> Goverment Workers</option>
-                                <option value="Health Care insurance"> Health Care insurance</option>
-                                <option value="Academics"> Academics</option>
-                                <option value="Militory Personnel"> Militory Personnel</option>
-                                <option value="Different Type of Professionals"> Different Type of Professionals</option>
-                            </select><br />
-                        </li>
+                <div id="menubar">
+                    <ul id="menu">
+                        <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+                        <li ><a data-th-href="@{/home}">Home</a></li>
+                        <li class="selected"><a data-th-href="@{/infoArms}">Ticket Requests</a></li>
+                        <li><a data-th-href="@{/certifications}">Certifications</a></li>
+                        <li><a data-th-href="@{/profiles}">Resume</a></li>
+                        <li><a data-th-href="@{/courses}">Courses</a></li>
+                        <li><a data-th-href="@{/public/api/courses/course}">Ajax Validation</a></li>
+                        <li><a data-th-href="@{/about}">About Us</a></li>
                     </ul>
                 </div>
-            <br/>  
-        </div>
-        <br/>
-        <hr />
-            <input class="w3-button w3-btn w3-button w3-round w3-gray" Style="margin-left:15px" type="submit" value="Add Ticket"/>
-        </form>
-        <br/>
-        </div>
+            </div>
+            <div id="content_header"></div>
+            <div id="site_content">
+                <!--<div id="banner"></div>
+                <div id="sidebar_container">
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                </div>-->
+                <!--<div id="content">-->
+                <div>
+                    <h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>
+                    <div>
+                        <table class=" w3-table-all w3-table w3-striped w3-hoverable" style="border: 3px solid #666666">
+                            <tr class="w3-dark-gray">
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Ticket Type</th>
+                                <th style="width:300px">Orgnization</th>
+                                <!--<security:authorize access="hasRole('ADMIN')">-->
+                                <th style="width:300px">Response</th>
+                                <!--</security:authorize>-->
+                                <th> Delete</th>
+                                <th> Update</th>
 
-        <!--<div class="w3-border">
-            <div class="w3-row" >
-                <div class="w3-col s5" Style="margin-left:5px">
-                    <strong class="w3-xlarge">Delete Ticket</strong><br />
-                    <form data-th-action="@{/infoArms/delete}" name="deleteInfoArmForm" method="delete">
+                            </tr>                
+                            <tr data-th-each="infoArm : ${infoArms}">
+                                <td data-th-text="${infoArm.id}"></td>
+                                <td data-th-text="${infoArm.ticketTitle}"></td>
+                                <td data-th-text="${infoArm.ticketType}"></td>
+                                <td>
+                                    <ul>
+                                        <li><em>Type:</em>
+                                            <span data-th-if="${infoArm.orgnization != null}" data-th-text="${infoArm.orgnization.orgnizationType}" data-th-remove="tag"></span>
+                                        </li>
+                                        <li><em>Number of Employee:</em>
+                                            <span data-th-if="${infoArm.orgnization != null}" data-th-text="${infoArm.orgnization.numberOfEmpolyee}" data-th-remove="tag"></span>
+                                        </li>
+                                        <li><em>Target: </em>
+                                            <span data-th-if="${infoArm.orgnization != null}" data-th-text="${infoArm.orgnization.orgnizationTarget}" data-th-remove="tag"></span>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td data-th-text="${infoArm.responseTicket}"></td>
+                                <td style="vertical-align: middle;"> 
+                                    <form data-th-object="${infoArm.id}" data-th-action="@{/infoArms/delete/}+${infoArm.id}" data-th-method="delete" class="inline-input" onsubmit="return confirm('Are you sure of deleting?')">
+                                        <!--<input class="w3-btn w3-round w3-gray " type="submit" value="Delete Ticket" />-->
+                                         <button class=" button w3-light-gray" type="submit" value="Submit"><i class="fa fa-close w3-xlarge"></i></button>
+                                    </form>
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    <!--<form data-th-object="${infoArm.id}" data-th-action="@{/infoArmsUpdate/update/}+${infoArm.id}" >
+                                        <input class="w3-btn w3-round w3-gray " type="submit" value="Update Ticket" /> 
+                                    </form>-->
+                                    <!--<a data-th-object="${infoArm.id}" data-th-href="@{/infoArmsUpdate/update/}+${infoArm.id}"> Update </a>-->
+                                    <!--<button class="w3-btn w3-round w3-gray " type="button"><a data-th-object="${infoArm.id}" data-th-href="@{/infoArmsUpdate/update/}+${infoArm.id}"> Update Ticket </a></button>-->
+                                    <a data-th-object="${infoArm.id}" data-th-href="@{/infoArmsUpdate/update/}+${infoArm.id}"><i class="fa fa-edit w3-xlarge "></i></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <hr />
+                    <button class="w3-button w3-btn w3-button w3-round w3-gray" onclick="myFunction()">Show/Hide The Form</button>
+                    <div Style="margin-top:18px; display: none;" id="add" class="w3-border">
+                        <strong class="w3-xlarge">Add Ticket</strong><br />
+                        <form data-th-action="@{/infoArms/add}" name="addInfoArmForm" method="post">
+                            <div class="w3-row" >
+                                <div class="w3-col s5" Style="margin-left:35px">
+                                    <em>Ticket Title:</em> <input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block;" type="text" name="ticketTitle" /><br />
+                                    <br />
+                                    <em>Ticket Type:</em><br />
+                                    <input type="radio" name="ticketType" value="Network Security" checked="checked" /> <span>Network Security</span><br />
+                                    <input type="radio" name="ticketType" value="Software Security" /> <span>Software Security</span><br />
+                                    <input type="radio" name="ticketType" value="Hardware Security" /> <span>Hardware Security</span><br />
+                                    <input type="radio" name="ticketType" value="Information Policy Security" /> <span>Information Security and Policy</span><br />
+                                </div>
+                                <div class="w3-col s6" >
+                                    <ul>
+                                        <li>
+                                            <em Style="margin-right:35px ">Orgnization Type:</em>
+                                            <select Style="width:250px;" name="orgnization.orgnizationType">
+                                                <option value="None" selected="selected">None</option>
+                                                <option value="IT"> Information Technology</option>
+                                                <option value="Militory"> Militory</option>
+                                                <option value="Hospital"> Hospital</option>
+                                                <option value="Industry"> Industry</option>
+                                                <option value="Education"> Education</option>
+                                                <option value="Petroleom Producer"> Petroleom Producer</option>
+                                                <option value="Aircraft Manufacturer"> Aircraft Manufacturer</option>
+                                            </select><br />
+                                        </li>
+                                        <li>
+                                            <em Style="margin-right:10px">Number of Employee:</em>
+                                            <select Style="width: 250px;" name="orgnization.numberOfEmpolyee">
+                                                <option value="None" selected="selected">None</option>
+                                                <option value="2000"> 2000</option>
+                                                <option value="4000"> 4000</option>
+                                                <option value="8000"> 8000</option>
+                                                <option value="10000"> 10000</option>
+                                                <option value="More than 10000"> More than 10000</option>
+                                            </select><br />
+                                        </li>
+                                        <li>
+                                            <em Style="margin-right:20px">Orgnization Target:</em>
+                                            <select Style="width: 250px;" name="orgnization.orgnizationTarget">
+                                                <option value="None" selected="selected">None</option>
+                                                <option value="Goverment Workers"> Goverment Workers</option>
+                                                <option value="Health Care insurance"> Health Care insurance</option>
+                                                <option value="Academics"> Academics</option>
+                                                <option value="Militory Personnel"> Militory Personnel</option>
+                                                <option value="Different Type of Professionals"> Different Type of Professionals</option>
+                                            </select><br />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <br/>  
+                            </div>
+                            <br/>
+                            <div class="w3-row"  data-th-if="${isAdmin}">
+                                <div class="w3-col s5" Style="margin-left:35px">
+                                    <em>Ticket Response:</em>
+                                    <textarea Style=" margin-top: 15px; width:350px;" class="w3-input w3-border w3-round w3-padding-0" rows="4" cols="50" name="responseTicket" type="text" ></textarea><br />
+                                </div>
+                            </div>
+                            <br/>
+                            <hr />
+                            <input class="w3-button w3-btn w3-button w3-round w3-gray" Style="margin-left:15px" type="submit" value="Add Ticket"/>
+                        </form>
+                        <br/>
+                    </div>
+                    <hr Style="margin-bottom:10px; margin-top:10px" />
+                    <div class="w3-row" >
                         <div class="w3-col s2" Style="margin-left:35px">
-                            <em>Ticket ID:</em> 
+                            <form data-th-action="@{/home}">
+                                <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Back"/>
+                            </form>
                         </div>
-                        <div class="w3-col s3" Style="margin-left:35px">
-                        <input type="text" name="id" /><br /> 
-                        </div>          
-                        <div class="w3-col s3" Style="margin-left:105px">
-                            <input class="w3-button w3-btn w3-button w3-round w3-gray" type="submit" value="Delete Ticket"/>
+                        <div class="w3-col s2" Style="margin-left:35px"> 
+                            <form data-th-action="@{/logout}" method="post" data-th-if="${isAuthenticated}">
+                                <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Sign Out"/>
+                            </form>
                         </div>
-                    </form>
+                    </div>
+                <!-- insert the page content here -->
                 </div>
-            </div>-->
-        <hr Style="margin-bottom:10px; margin-top:10px" />
-        <div class="w3-row" >
-            <div class="w3-col s2" Style="margin-left:35px">
-                <form data-th-action="@{/home}" method="post">
-                    <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Back"/>
-                </form>
             </div>
-            <div class="w3-col s2" Style="margin-left:35px"> 
-                <form data-th-action="@{/logout}" method="post">
-                    <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Sign Out"/>
-                </form>
+            <div id="content_footer"></div>
+            <div id="footer">
+                <p><a data-th-href="@{/home}">Home</a> | <a data-th-href="@{/about}">Contact Us</a></p>
+                <p>Copyright &copy; InfoArmor </p>
             </div>
         </div>
-        <br/>
-        
     </body>
 </html>

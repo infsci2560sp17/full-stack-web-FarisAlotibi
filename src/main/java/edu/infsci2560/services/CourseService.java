@@ -39,7 +39,7 @@ public class CourseService {
     @RequestMapping(value = "/course", method = RequestMethod.GET)
     public ModelAndView course() {
 
-        Course course = repository.findById(7L);
+        Course course = repository.findById(1L);
         ModelAndView modelAndView = new ModelAndView("Ajax/course");
         modelAndView.addObject("course", course);
         return modelAndView;

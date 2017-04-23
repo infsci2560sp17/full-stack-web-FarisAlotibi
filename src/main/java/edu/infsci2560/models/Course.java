@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import java.io.*;
+import java.lang.*;
 
 /**
  *
@@ -23,10 +25,11 @@ public class Course {
     //private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     protected String courseName;
     protected URL courseLink;
+    // protected String courseLink;
     protected String courseDescription;
 
 
@@ -42,7 +45,10 @@ public class Course {
         this.id = id;
         this.courseName = courseName;
         this.courseDescription = courseDescription;
+        // String stringUrl = courseLink.replaceAll(java.util.regex.Pattern.quote("watch?v="), "embed/");
+        // this.courseLink = stringUrl;
         this.courseLink = courseLink;
+
     }
 
     @Override
@@ -81,12 +87,29 @@ public class Course {
         return courseLink;
     }
 
+    // public String getCourseLink() {
+    //     return courseLink;
+    // }
+
     /**
      * @param set the courseLink
      */
-    public void setCourseLink(URL courseLink) {
-        this.courseLink = courseLink;
+    public void setCourseLink(URL courseLink){       //throws IOException {
+        try{
+            String stringUrl = courseLink.toString();
+            stringUrl = stringUrl.replaceAll(java.util.regex.Pattern.quote("watch?v="), "embed/");
+            URL newCourseLink = new URL(stringUrl);
+            this.courseLink = newCourseLink;
+        } catch (IOException e){
+            throw new RuntimeException(e);
+        }
+        // this.courseLink = courseLink;
     }
+
+    // public void setCourseLink(String courseLink){
+    //     String stringUrl = courseLink.replaceAll(java.util.regex.Pattern.quote("watch?v="), "embed/");
+    //     this.courseLink = stringUrl;
+    // }
 
     /**
      * @return the id

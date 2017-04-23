@@ -1,10 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 
-<head data-ng-href="@{static/Style/style.css}">
+<!--<head data-ng-href="@{static/css/style.css}">-->
+<head>
   <title>InfoArmor</title>
-  <link rel="stylesheet" type="text/css" data-ng-href="static/Style/style.css" />
-  
+  <!--<link rel="stylesheet" type="text/css" data-ng-href="static/css/style.css" />-->
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css" data-th-href="@{css/style.css}" />
+
 </head>
 
 <body>
@@ -17,52 +19,54 @@
           <h2>Integrity. Authentication. Availability Assured.</h2>
         </div>
       </div>
-      <div id="menubar">
+      <div id="menubar" class="main">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a data-th-href="@{/login}" data-th-if="${isAnonymous}">Login</a></li>
+          <li><a data-th-href="@{/registration}" data-th-if="${isAnonymous}">Registration</a></li>
+          <li><a data-th-href="@{/admin/home}" data-th-if="${isAdmin}">Admin Page</a></li>
           <li class="selected"><a data-th-href="@{/home}">Home</a></li>
           <li><a data-th-href="@{/infoArms}">Ticket Requests</a></li>
           <li><a data-th-href="@{/certifications}">Certifications</a></li>
-          <li><a data-th-href="@{/profiles}">Profile</a></li>
+          <!--<li><a data-th-href="@{/profiles}">Profile</a></li>-->
           <li><a data-th-href="@{/courses}">Courses</a></li>
           <li><a data-th-href="@{/public/api/courses/course}">Ajax Validation</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a data-th-href="@{/about}">About Us</a></li>
         </ul>
       </div>
     </div>
     <div id="content_header"></div>
     <div id="site_content">
-      <div id="banner"></div>
-	  <div id="sidebar_container">
-        <div class="sidebar">
-          <div class="sidebar_top"></div>
-          <div class="sidebar_item">
-		  
-          </div>
-          <div class="sidebar_base"></div>
-        </div>
-        <div class="sidebar">
-          <div class="sidebar_top"></div>
-          <div class="sidebar_item">
-
-          </div>
-          <div class="sidebar_base"></div>
-        </div>
-        <div class="sidebar">
-          <div class="sidebar_top"></div>
-          <div class="sidebar_item">
-
-          </div>
-          <div class="sidebar_base"></div>
-        </div>
+      <div id="banner1">
+        <!--<h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>-->
+        <!--<h1 data-th-inline="text" style="display:none;" value="${#httpServletRequest.remoteUser}">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>-->
+        <img Style="width: 900px; height: 150px;" src="http://www.worcester.edu/uploadedImages/Website_Assets/Images/UTS/ISA/ISA_banner.jpg?n=7959" />
       </div>
+	    <!--<div id="sidebar_container">
+        <div class="sidebar">
+          <div class="sidebar_top"></div>
+          <div class="sidebar_item"></div>
+          <div class="sidebar_base"></div>
+        </div>
+        <div class="sidebar">
+          <div class="sidebar_top"></div>
+          <div class="sidebar_item"></div>
+          <div class="sidebar_base"></div>
+        </div>
+        <div class="sidebar">
+          <div class="sidebar_top"></div>
+          <div class="sidebar_item"></div>
+          <div class="sidebar_base"></div>
+        </div>
+      </div>-->
       <div id="content">
         <!-- insert the page content here -->
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       </div>
     </div>
     <div id="content_footer"></div>
-    <div id="footer">
-      <p><a href="">Home</a> | <a href="">Examples</a> | <a href="">A Page</a> | <a href="">Another Page</a> | <a href="">Contact Us</a></p>
+    <div class ="main" id="footer">
+      <p><a data-th-href="@{/home}">Home</a> | <a data-th-href="@{/about}">Contact Us</a></p>
       <p>Copyright &copy; InfoArmor </p>
     </div>
   </div>

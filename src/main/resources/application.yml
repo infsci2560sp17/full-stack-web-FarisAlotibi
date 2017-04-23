@@ -15,6 +15,7 @@ spring:
         show-sql: true
         hibernate:
             ddl-auto: create-drop
+            # ddl-auto: update
     http:
         multipart:
             max-file-size: 10MB

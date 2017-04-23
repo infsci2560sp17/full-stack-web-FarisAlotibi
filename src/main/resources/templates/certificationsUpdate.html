@@ -1,10 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+    <!--<head data-ng-href="@{static/css/style.css}">-->
+    <head>
+        <title>Update User Certification</title>
+        <!--<link rel="stylesheet" type="text/css" data-ng-href="static/css/style.css" />-->
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css" data-th-href="@{../../css/style.css}" />
+
+        <!--<link rel = "stylesheet" type = "text/css" href = "/full-stack-web-FarisAlotibi/src/main/resources/static/css/Style.css" /> -->
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
+        <style>
+            strong,em {
+                font-family:"Comic Sans MS";
+            }
+            span {
+                font-family:"cursive";
+            }
+        </style>
+    </head>
+
+    <body class="w3-container">
+        <div id="main">
+            <div id="header">
+                <div id="logo">
+                    <div id="logo_text">
+                        <!-- class="logo_colour", allows you to change the colour of the text -->
+                        <h1><a data-th-href="@{/home}">Security<span class="logo_colour">Armor</span></a></h1>
+                        <h2>Integrity. Authentication. Availability Assured.</h2>
+                    </div>
+                </div>
+                <div id="menubar">
+                    <ul id="menu">
+                        <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+                        <li ><a data-th-href="@{/home}">Home</a></li>
+                        <li><a data-th-href="@{/infoArms}">Ticket Requests</a></li>
+                        <li class="selected"><a data-th-href="@{/certifications}">Certifications</a></li>
+                        <li><a data-th-href="@{/profiles}">Resume</a></li>
+                        <li><a data-th-href="@{/courses}">Courses</a></li>
+                        <li><a data-th-href="@{/public/api/courses/course}">Ajax Validation</a></li>
+                        <li><a data-th-href="@{/about}">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="content_header"></div>
+            <div id="site_content">
+                <!--<div id="banner"></div>
+                <div id="sidebar_container">
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                </div>-->
+                <!--<div id="content">-->
+                <div>
+                    <hr />
+                    <div class="w3-border">
+                        <strong class="w3-xlarge">Update Certification</strong><br />
+                        <form data-th-object="${certification.id}" data-th-action="@{/certificationsUpdate/update/}+${certification.id}" name="addCertificationForm" data-th-method="put">
+                            <div class="w3-row" >
+                                <div class="w3-col s5" Style="margin-left:35px">
+                                    <em>Certification Name:</em> <input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block; margin-left:35px;" type="text" name="certificationName" /><br />
+                                    <br />
+                                    <em>Certification Type:</em><br />
+                                    <input Style="margin-left:185px" type="radio" name="certificationType" value="Pentration Testing" checked="checked" /> <span>PenTesting</span><br />
+                                    <input Style="margin-left:185px" type="radio" name="certificationType" value="Forensics" /> <span>Forensics</span><br />
+                                    <input Style="margin-left:185px" type="radio" name="certificationType" value="Hacking" /> <span>Hacking </span><br />
+                                    <input Style="margin-left:185px" type="radio" name="certificationType" value="Privacy" /> <span>Privacy </span><br />
+                                    <input Style="margin-left:185px" type="radio" name="certificationType" value="Network " /> <span>Network  </span><br />
+                                    <input Style="margin-left:185px" type="radio" name="certificationType" value="Cloud" /> <span>Cloud</span><br />  <br />
+                                    <em Style="margin-right:3px ">Certification Organizer:</em>
+                                    <select Style="width:250px;" name="certificationOrgnizor">
+                                        <option value="None" selected="selected">None</option>
+                                        <option value="ELearnSecurity"> eLearnSecurity</option>
+                                        <option value="International Association of Privacy Professionals"> IAPP</option>
+                                        <option value="Cisco"> Cisco</option>
+                                        <option value="CompTIA"> CompTIA</option>
+                                        <option value="Offensive Security"> Offensive Security</option>
+                                        <option value="International Information System Security Certification Consortium"> ISC2</option>
+                                    </select><br />
+                                </div>
+                            <br/>      
+                        </div>
+                        <br/>
+                        <hr />
+                            <input class="w3-button w3-btn w3-button w3-round w3-gray" Style="margin-left:15px" type="submit" value="Update Certification"/>
+                        </form>
+                    <br/>
+                    </div>
+                    <hr Style="margin-bottom:10px; margin-top:10px" />
+                    <div class="w3-row" > 
+                        <div class="w3-col s2" Style="margin-left:35px">
+                            <form data-th-action="@{/home}">
+                                <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Cancel" onclick="history.go(-1);"/>
+                            </form>
+                        </div>
+                        <!--<div class="w3-col s2" Style="margin-left:35px"> 
+                                <form data-th-action="@{/logout}" method="post">
+                                    <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Sign Out"/>
+                                </form>
+                        </div>-->
+                    </div>
+                    <br/>
+                <!-- insert the page content here -->
+                </div>
+            </div>
+            <div id="content_footer"></div>
+            <div id="footer">
+                <p><a data-th-href="@{/home}">Home</a> | <a data-th-href="@{/about}">Contact Us</a></p>
+                <p>Copyright &copy; InfoArmor </p>
+            </div>
+        </div>
+    </body>
+</html>
+<!--
 <!DOCTYPE html>
 <html>
     <head>
         <title>User Home</title>
-        <!--<link rel = "stylesheet"
-             type = "text/css"
-             href = "/full-stack-web-FarisAlotibi/src/main/resources/static/css/Style.css" /> -->
              <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
         <style>
             strong,em {
@@ -16,7 +138,7 @@
         </style>
     </head>
     <body class="w3-container">
-                <hr />
+        <hr />
         <div class="w3-border">
         <strong class="w3-xlarge">Update Certification</strong><br />
         <form data-th-object="${certification.id}" data-th-action="@{/certificationsUpdate/update/}+${certification.id}" name="addCertificationForm" data-th-method="put">
@@ -56,4 +178,4 @@
         </form>
         <br/>
     </body>
-</html>
+</html>-->

@@ -21,29 +21,32 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class Certification {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     protected String certificationType;
     protected String certificationName;
-    protected CertificationOrgnizor certificationOrgnizor;
+    // protected CertificationOrgnizor certificationOrgnizor;
+    protected String certificationOrgnizor;
 
-    public enum CertificationOrgnizor {
-        ELearnSecurity,
-        International_Association_of_Privacy_Professionals,
-        Cisco,
-        CompTIA,
-        Offensive_Security,
-        International_Information_System_Security_Certification_Consortium
-    }
+    // public enum CertificationOrgnizor {
+    //     ELearnSecurity,
+    //     International_Association_of_Privacy_Professionals,
+    //     Cisco,
+    //     CompTIA,
+    //     Offensive_Security,
+    //     International_Information_System_Security_Certification_Consortium
+    // }
 
     public Certification() {
         this.id = Long.MAX_VALUE;
         this.certificationName = null;
         this.certificationType = null;
-        this.certificationOrgnizor = CertificationOrgnizor.Cisco;
+        // this.certificationOrgnizor = CertificationOrgnizor.Cisco;
+        this.certificationOrgnizor = null;
     }
 
-    public Certification(String certificationType, String certificationName, CertificationOrgnizor certificationOrgnizor) {
+    // public Certification(String certificationType, String certificationName, CertificationOrgnizor certificationOrgnizor) {
+    public Certification(String certificationType, String certificationName, String certificationOrgnizor) {
         this.certificationType = certificationType;
         this.certificationName = certificationName;
         this.certificationOrgnizor = certificationOrgnizor;
@@ -109,14 +112,18 @@ public class Certification {
         /**
      * @return the certificationOrgnizor
      */
-    public CertificationOrgnizor getCertificationOrgnizor() {
+     
+    // public CertificationOrgnizor getCertificationOrgnizor() {
+    public String getCertificationOrgnizor() {
         return certificationOrgnizor;
     }
 
     /**
      * @param certificationOrgnizor the certificationOrgnizor to set
      */
-    public void setCertificationOrgnizor(CertificationOrgnizor certificationOrgnizor) {
+
+    // public void setCertificationOrgnizor(CertificationOrgnizor certificationOrgnizor) {
+    public void setCertificationOrgnizor(String certificationOrgnizor) {
         this.certificationOrgnizor = certificationOrgnizor;
     }
 }

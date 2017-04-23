@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+
+<!--<head data-ng-href="@{static/css/style.css}">-->
+<head>
+    <title>New User Registration</title>
+    <!--<link rel="stylesheet" type="text/css" data-ng-href="static/css/style.css" />-->
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" data-th-href="@{../css/style.css}" />
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/lib/w3.css" />
+
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a data-th-href="@{/home}">Security<span class="logo_colour">Armor</span></a></h1>
+          <h2>Integrity. Authentication. Availability Assured.</h2>
+        </div>
+      </div>
+      <div id="menubar" class="user">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a data-th-href="@{/home}">Home</a></li>
+          <li class="selected"><a data-th-href="@{/registration}">Registration</a></li>
+          <li><a data-th-href="@{/login}">Login Page</a></li>
+          <!--<li><a data-th-href="@{/infoArms}">Ticket Requests</a></li>-->
+          <!--<li><a data-th-href="@{/certifications}">Certifications</a></li>-->
+          <!--<li><a data-th-href="@{/profiles}">Profile</a></li>-->
+          <!--<li><a data-th-href="@{/courses}">Courses</a></li>-->
+          <!--<li><a data-th-href="@{/public/api/courses/course}">Ajax Validation</a></li>-->
+          <li><a data-th-href="@{/about}">About Us</a></li>
+          <!--<li><a data-th-href="@{/logout}">Sign out</a></li>-->
+        </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+      <div id="banner1">
+        <!--<h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>-->
+        <!--<h1 data-th-inline="text" style="display:none;" value="${#httpServletRequest.remoteUser}">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>-->
+        <img Style="width: 900px; height: 150px;" src="http://www.worcester.edu/uploadedImages/Website_Assets/Images/UTS/ISA/ISA_banner.jpg?n=7959" />
+      </div>
+        <!--<div id="sidebar_container">
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+        </div>-->
+      <div id="content-X"><br/>
+        <div class="w3-container">
+            <div class="w3-row">
+                <div class="w3-full w3-card-4">
+                    <div class="w3-container w3-dark-gray">
+                        <h2 Style="color: white">User Registration Form</h2>
+                    </div>
+                    
+                    <form autocomplete="off" action="#" data-th-action="@{/registration}" data-th-object="${user}" method="post" class="w3-container" role="form">
+                        <div class="w3-group"> 
+                            <label>First Name:</label>
+                            <label data-th-if="${#fields.hasErrors('firstName')}" data-th-errors="*{firstName}" class="validation-message"></label>
+                            <input type="text" data-th-field="*{firstName}" class="w3-input w3-hover-light-gray" />
+                        </div>
+                        <div class="w3-group"> 
+                            <label>Last Name:</label>
+                            <label	data-th-if="${#fields.hasErrors('lastName')}" data-th-errors="*{lastName}" class="validation-message"></label>
+                            <input type="text" data-th-field="*{lastName}" class="w3-input w3-hover-light-gray" />
+                        </div>
+                        <div class="w3-group">
+                            <select class="w3-select w3-hover-light-gray" data-th-field="*{gender}" required="">
+                                <option value="" disabled="" selected="">Choose your option</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            <!--<input type="radio" data-th-field="*{gender}" checked="checked" value="Male" class="w3-radio" />
+                            <label>Male</label>
+                            <input type="radio" data-th-field="*{gender}" value="Female" class="w3-radio" />
+                            <label>Female</label>-->
+                        </div>
+                        <div class="w3-group"> 
+                            <label>Email/Username:</label>
+                            <input type="text" data-th-field="*{email}" class="w3-input w3-hover-light-gray" /> 
+                            <label data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}" class="validation-message"></label>
+                        </div>
+                        <div class="w3-group"> 
+                            <label>Password:</label>
+                            <input type="password" data-th-field="*{password}" class="w3-input w3-hover-light-gray" /> 
+                                    <label data-th-if="${#fields.hasErrors('password')}" data-th-errors="*{password}" class="validation-message"></label>
+                        </div>
+                        
+                        <div class="w3-group"> 
+                            <input class="w3-btn w3-dark-grey w3-round" type="submit" value="Register User"/>
+                        </div>
+
+                        <div class="w3-group">
+                            <span data-th-utext="${successMessage}"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- insert the page content here -->
+      </div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer">
+      <p><a data-th-href="@{/home}">Home</a> | <a data-th-href="@{/about}">Contact Us</a></p>
+      <p>Copyright &copy; InfoArmor </p>
+    </div>
+  </div>
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Registration Form</title>
+		<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/lib/w3.css" />
+	</head>
+	<body class="w3-container">
+		<form data-th-action="@{/}" method="get">
+			<button class="btn btn-md btn-warning btn-block" type="Submit">Go To Login Page</button>
+		</form>
+
+		<div class="w3-row">
+            <div class="w3-half w3-card-4">
+                <div class="w3-container w3-black">
+                    <h2>Registration Form</h2>
+                </div>
+				
+				<form autocomplete="off" action="#" data-th-action="@{/registration}" data-th-object="${user}" method="post" class="w3-container" role="form">
+                    <div class="w3-group"> 
+                        <label>First Name:</label>
+						<label data-th-if="${#fields.hasErrors('firstName')}" data-th-errors="*{firstName}" class="validation-message"></label>
+						<input type="text" data-th-field="*{firstName}" class="w3-input w3-border w3-round" />
+                    </div>
+					<div class="w3-group"> 
+                        <label>Last Name:</label>
+						<label	data-th-if="${#fields.hasErrors('lastName')}" data-th-errors="*{lastName}" class="validation-message"></label>
+						<input type="text" data-th-field="*{lastName}" class="w3-input w3-border w3-round" />
+                    </div>
+					<div class="w3-group">
+						<input type="radio" data-th-field="*{gender}" checked="checked" value="Male" class="w3-radio" />
+						<label>Male</label>
+						<input type="radio" data-th-field="*{gender}" value="Female" class="w3-radio" />
+						<label>Female</label>
+					</div>
+					<div class="w3-group"> 
+                        <label>Email:</label>
+						<input type="text" data-th-field="*{email}" class="w3-input w3-border w3-round" /> 
+						<label data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}" class="validation-message"></label>
+                    </div>
+					<div class="w3-group"> 
+                        <label>Password:</label>
+						<input type="password" data-th-field="*{password}" class="w3-input w3-border w3-round" /> 
+								<label data-th-if="${#fields.hasErrors('password')}" data-th-errors="*{password}" class="validation-message"></label>
+                    </div>
+                    
+                    <div class="w3-group"> 
+                        <input class="w3-btn w3-blue-grey" type="submit" value="Register User"/>
+                    </div>
+
+					<div class="w3-group">
+						<span data-th-utext="${successMessage}"></span>
+					</div>
+                </form>
+            </div>
+        </div>
+
+	</body>
+</html>-->

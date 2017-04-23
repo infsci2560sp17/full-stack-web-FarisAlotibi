@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html>
+
+<!--<head data-ng-href="@{static/css/style.css}">-->
+<head>
+    <title>User Home</title>
+    <!--<link rel="stylesheet" type="text/css" data-ng-href="static/css/style.css" />-->
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" data-th-href="@{../../css/style.css}" />
+    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/lib/w3.css" />
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <style >
+        .button {
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+            outline:none;
+        }
+        .inline-input { display: inline-block; width: auto; }
+    </style>
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a data-th-href="@{/home}">Security<span class="logo_colour">Armor</span></a></h1>
+          <h2>Integrity. Authentication. Availability Assured.</h2>
+        </div>
+      </div>
+      <div id="menubar" class="user">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a data-th-href="@{/home}">Home</a></li>
+          <li><a data-th-href="@{/registration}">Registration</a></li>
+          <li class="selected"><a data-th-href="@{/users}">Users Management</a></li>
+          <!--<li><a data-th-href="@{/infoArms}">Ticket Requests</a></li>-->
+          <!--<li><a data-th-href="@{/certifications}">Certifications</a></li>-->
+          <!--<li><a data-th-href="@{/profiles}">Profile</a></li>-->
+          <!--<li><a data-th-href="@{/courses}">Courses</a></li>-->
+          <!--<li><a data-th-href="@{/public/api/courses/course}">Ajax Validation</a></li>-->
+          <!--<li><a data-th-href="@{/about}">About Us</a></li>-->
+          <li><a data-th-href="@{/logout}">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+      <div id="banner1">
+        <!--<h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>-->
+        <!--<h1 data-th-inline="text" style="display:none;" value="${#httpServletRequest.remoteUser}">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>-->
+        <img Style="width: 900px; height: 150px;" src="http://www.worcester.edu/uploadedImages/Website_Assets/Images/UTS/ISA/ISA_banner.jpg?n=7959" />
+      </div>
+        <!--<div id="sidebar_container">
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+            <div class="sidebar">
+                <div class="sidebar_top"></div>
+                <div class="sidebar_item"></div>
+                <div class="sidebar_base"></div>
+            </div>
+        </div>-->
+      <div id="content-X">
+        <div class="w3-container">
+            <h2 Style="color: chartreuse">Users</h2>
+
+            <table class="w3-table-all w3-hoverable">
+                <tr class="w3-dark-gray">
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Active</th>
+                    <th>Role/s</th>
+                    <th>Operations</th>
+                </tr>                
+                <tr data-th-each="user : ${users}">
+                    <td style="vertical-align: middle;" data-th-text="${user.id}"></td>
+                    <td style="vertical-align: middle;" data-th-text="${user.firstName}"></td>
+                    <td style="vertical-align: middle;" data-th-text="${user.lastName}"></td>
+                    <td style="vertical-align: middle;" data-th-text="${user.gender}"></td>
+                    <td style="vertical-align: middle;" data-th-text="${user.email}"></td>
+                    <td style="vertical-align: middle;" data-th-text="${user.active}"></td>
+                    <td style="vertical-align: middle;">
+                        <ul> 
+                            <li data-th-each="role : ${user.roles}" data-th-text="${role}"></li>
+                        </ul>
+                    </td>
+                    <td style="vertical-align: middle;">
+                        <a data-th-href="@{|/users/view/${user.id}|}"><i class="fa fa-search w3-xlarge"></i></a>
+                        <a data-th-href="@{|/users/update/${user.id}|}"><i class="fa fa-edit w3-xlarge"></i></a>
+                        <form data-th-object="${user}" data-th-action="@{/users/delete/} + ${user.id}" data-th-method="delete" class="inline-input" onsubmit="return confirm('Once delete user, it will permenent. Do you still want to proceed?')">
+                            <button class="button" type="submit" value="Submit"><i class="fa fa-close w3-xlarge"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+
+            <hr />
+            <form data-th-action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+            <hr />
+        </div>
+        <!-- insert the page content here -->
+      </div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer">
+      <p><a href="">Home</a> | <a href="">Examples</a> | <a href="">A Page</a> | <a href="">Another Page</a> | <a href="">Contact Us</a></p>
+      <p>Copyright &copy; InfoArmor </p>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+<!--<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Home</title>
+        <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/lib/w3.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <style>
+            .button {
+                background-color: Transparent;
+                background-repeat:no-repeat;
+                border: none;
+                cursor:pointer;
+                overflow: hidden;
+                outline:none;
+            }
+            .inline-input { display: inline-block; width: auto; }
+        </style>
+    </head>
+    <body class="w3-container">
+        <h1>Users</h1>
+
+        <table class="w3-table-all w3-hoverable">
+            <tr class="w3-teal">
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Active</th>
+                <th>Role(s)</th>
+                <th>...</th>
+            </tr>                
+            <tr data-th-each="user : ${users}">
+                <td style="vertical-align: middle;" data-th-text="${user.id}"></td>
+                <td style="vertical-align: middle;" data-th-text="${user.firstName}"></td>
+                <td style="vertical-align: middle;" data-th-text="${user.lastName}"></td>
+                <td style="vertical-align: middle;" data-th-text="${user.gender}"></td>
+                <td style="vertical-align: middle;" data-th-text="${user.email}"></td>
+                <td style="vertical-align: middle;" data-th-text="${user.active}"></td>
+                <td style="vertical-align: middle;">
+                    <ul> 
+                        <li data-th-each="role : ${user.roles}" data-th-text="${role}"></li>
+                    </ul>
+                </td>
+                <td style="vertical-align: middle;">
+                    <a data-th-href="@{|/users/view/${user.id}|}"><i class="material-icons">zoom_in</i></a>
+                    <a data-th-href="@{|/users/update/${user.id}|}"><i class="material-icons">edit</i></a>
+                    <form data-th-object="${user}" data-th-action="@{/users/delete/} + ${user.id}" data-th-method="delete" class="inline-input" onsubmit="return confirm('This user will be permanently deleted and cannot be recovered. Are you sure?')">
+                        <button class="button" type="submit" value="Submit"><i class="material-icons">delete</i></button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+        <hr />
+        <form data-th-action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+        <hr />
+    </body>
+</html>-->

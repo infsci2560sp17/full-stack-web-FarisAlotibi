@@ -3,9 +3,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [Unreleased]
+## [v1.5] - 2017-04-22
 ### Added
-- To Be Determined.
+- The Website style was updated.
+- More javascript functionlity was added.
+    - Added JavaScript for login page.
+    - Added JavaScript for Certification page.
+    - Added JavaScript for Courses page.
+    - Added JavaScript for Tickets page (InfoArms).
+- Filter functionlity was added to Youtube URLs
+- Registration functionality was added for users.
+- Adminstrator page was created.
+- User management page was created.
+    - View users information page was created.
+    - Update users page was created.
+- About page was created.
+- Created user Model, Repository, Controller, Services.
+- More screenshots were added.
+- CSS files were added.
+- Modified security configuration files.
+- Login page was modified along with all previous pages.
 
 ## [v1.4] - 2017-03-25
 ### Added
@@ -78,5 +95,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Deployed to Heroku.
 
 [Unreleased]: https://github.com/infsci2560sp17/full-stack-web-FarisAlotibi/compare/v1.2...HEAD
+[v1.5]: https://github.com/infsci2560sp17/full-stack-web-FarisAlotibi/compare/v1.4...v1.5
+[v1.4]: https://github.com/infsci2560sp17/full-stack-web-FarisAlotibi/compare/v1.3...v1.4
+[v1.3]: https://github.com/infsci2560sp17/full-stack-web-FarisAlotibi/compare/v1.2...v1.3
 [v1.2]: https://github.com/infsci2560sp17/full-stack-web-FarisAlotibi/compare/v1.1...v1.2
 [v1.1]: https://github.com/infsci2560sp17/full-stack-web-FarisAlotibi/compare/...v1.1

@@ -32,6 +32,7 @@ public class ProfileController {
     @RequestMapping(value = "profiles", method = RequestMethod.GET)
     public ModelAndView index() {        
         return new ModelAndView("profiles", "profiles", repository.findAll());
+        // return new ModelAndView("profiles", "profiles", repository.getMaxId());
     }
     
     @RequestMapping(value = "profiles/add", method = RequestMethod.POST, consumes="application/x-www-form-urlencoded", produces = "application/json")

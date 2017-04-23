@@ -7,9 +7,13 @@ package edu.infsci2560.repositories;
 
 import edu.infsci2560.models.Profile;
 import org.springframework.data.repository.PagingAndSortingRepository;
-
+import javax.transaction.Transactional;
 /**
  *
  * @author faris
  */
-public interface ProfileRepository extends PagingAndSortingRepository<Profile, Long> {}
+public interface ProfileRepository extends PagingAndSortingRepository<Profile, Long> {
+
+    // @Transactional
+    // Public Integer getMaxId();
+}

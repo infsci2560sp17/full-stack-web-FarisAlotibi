@@ -1,4 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+    <!--<head data-ng-href="@{static/css/style.css}">-->
+    <head>
+        <title>Update User Tickets </title>
+        <!--<link rel="stylesheet" type="text/css" data-ng-href="static/css/style.css" />-->
+        <link rel="stylesheet" type="text/css" href="../static/css/style.css" data-th-href="@{../../css/style.css}" />
+        <!--<link rel = "stylesheet" type = "text/css" href = "/full-stack-web-FarisAlotibi/src/main/resources/static/css/Style.css" /> -->
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
 
+        <style>
+            strong,em {
+                font-family:"Comic Sans MS";
+            }
+            span {
+                font-family:"cursive";
+            }
+        </style>
+    </head>
+
+    <body class="w3-container">
+        <div id="main">
+            <div id="header">
+                <div id="logo">
+                    <div id="logo_text">
+                        <!-- class="logo_colour", allows you to change the colour of the text -->
+                        <h1><a data-th-href="@{/home}">Security<span class="logo_colour">Armor</span></a></h1>
+                        <h2>Integrity. Authentication. Availability Assured.</h2>
+                    </div>
+                </div>
+                <div id="menubar">
+                    <ul id="menu">
+                        <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+                        <li ><a data-th-href="@{/home}">Home</a></li>
+                        <li class="selected"><a data-th-href="@{/infoArms}">Ticket Requests</a></li>
+                        <li><a data-th-href="@{/certifications}">Certifications</a></li>
+                        <li><a data-th-href="@{/profiles}">Resume</a></li>
+                        <li><a data-th-href="@{/courses}">Courses</a></li>
+                        <li><a data-th-href="@{/public/api/courses/course}">Ajax Validation</a></li>
+                        <li><a data-th-href="@{/about}">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="content_header"></div>
+            <div id="site_content">
+                <!--<div id="banner"></div>
+                <div id="sidebar_container">
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                    <div class="sidebar">
+                        <div class="sidebar_top"></div>
+                        <div class="sidebar_item"></div>
+                        <div class="sidebar_base"></div>
+                    </div>
+                </div>-->
+                <!--<div id="content">-->
+                <div>
+                    <h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>
+                    <hr />
+                    <div class="w3-border">
+                    <strong class="w3-xlarge">Update Ticket</strong><br />
+                    <form  data-th-object="${infoArm.id}" data-th-action="@{/infoArmsUpdate/update/}+${infoArm.id}" name="updateInfoArmForm" data-th-method="put">
+                        <div class="w3-row" >
+                            <div class="w3-col s5" Style="margin-left:35px">
+                                <em>Ticket Title:</em> <input class="w3-input w3-border w3-round w3-padding-0" style="width:auto; display: inline-block;" type="text" name="ticketTitle" /><br />
+                                <br />
+                                <em>Ticket Type:</em><br />
+                                <input type="radio" name="ticketType" value="Network Security" checked="checked" /> <span>Network Security</span><br />
+                                <input type="radio" name="ticketType" value="Software Security" /> <span>Software Security</span><br />
+                                <input type="radio" name="ticketType" value="Hardware Security" /> <span>Hardware Security</span><br />
+                                <input type="radio" name="ticketType" value="Information Policy Security" /> <span>Information Security and Policy</span><br />
+                            </div>
+                            <div class="w3-col s6" >
+                                <ul>
+                                    <li>
+                                        <em Style="margin-right:35px ">Orgnization Type:</em>
+
+                                        <select Style="width:250px;" name="orgnization.orgnizationType">
+                                            <option value="None" selected="selected">None</option>
+                                            <option value="IT"> Information Technology</option>
+                                            <option value="Militory"> Militory</option>
+                                            <option value="Hospital"> Hospital</option>
+                                            <option value="Industry"> Industry</option>
+                                            <option value="Education"> Education</option>
+                                            <option value="Petroleom Producer"> Petroleom Producer</option>
+                                            <option value="Aircraft Manufacturer"> Aircraft Manufacturer</option>
+                                        </select><br />
+                                    </li>
+                                    <li>
+                                        <em Style="margin-right:10px">Number of Employee:</em>
+                                        <select Style="width: 250px;" name="orgnization.numberOfEmpolyee">
+                                            <option value="None" selected="selected">None</option>
+                                            <option value="2000"> 2000</option>
+                                            <option value="4000"> 4000</option>
+                                            <option value="8000"> 8000</option>
+                                            <option value="10000"> 10000</option>
+                                            <option value="More than 10000"> More than 10000</option>
+                                        </select><br />
+                                    </li>
+
+                                    <li>
+                                        <em Style="margin-right:20px">Orgnization Target:</em>
+                                        <select Style="width: 250px;" name="orgnization.orgnizationTarget">
+                                            <option value="None" selected="selected">None</option>
+                                            <option value="Goverment Workers"> Goverment Workers</option>
+                                            <option value="Health Care insurance"> Health Care insurance</option>
+                                            <option value="Academics"> Academics</option>
+                                            <option value="Militory Personnel"> Militory Personnel</option>
+                                            <option value="Different Type of Professionals"> Different Type of Professionals</option>
+                                        </select><br />
+                                    </li>
+                                </ul>
+                            </div>
+                            <br/>  
+                        </div>
+                        <div class="w3-row"  data-th-if="${isAdmin}">
+                            <div class="w3-col s5" Style="margin-left:35px">
+                                <em>Ticket Response:</em>
+                                <textarea Style=" margin-top: 15px; width:350px;" class="w3-input w3-border w3-round w3-padding-0" rows="4" cols="50" name="responseTicket" type="text" ></textarea><br />
+                            </div>
+                        </div>
+                        <br/>
+                        <hr />
+                        <input class="w3-button w3-btn w3-button w3-round w3-gray" Style="margin-left:15px" type="submit" value="Update Ticket"/>
+                    </form>
+                    <br/>
+                    </div>
+                    <hr Style="margin-bottom:10px; margin-top:10px" />
+                    <div class="w3-row" >
+                        <div class="w3-col s2" Style="margin-left:35px">
+                            <form data-th-action="@{/infoArms}">
+                                <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Back"/>
+                            </form>
+                        </div>
+                    </div>
+                    <br/>                
+                    <!-- insert the page content here -->
+                </div>
+            </div>
+            <div id="content_footer"></div>
+            <div id="footer">
+                <p><a data-th-href="@{/home}">Home</a> | <a data-th-href="@{/about}">Contact Us</a></p>
+                <p>Copyright &copy; InfoArmor </p>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+<!--
+
+
+    <!DOCTYPE html>
+<html>
+    <head>
+        <title>Update Ticket</title>
+             <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css"/>
+        <style>
+            strong,em {
+                font-family:"Comic Sans MS";
+            }
+            span {
+                font-family:"cursive";
+            }
+        </style>
+    </head>
+    <body class="w3-container">
+        <h1 data-th-inline="text">[[${#httpServletRequest.remoteUser}]]'s Information Armer's!</h1>
         <hr />
         <div class="w3-border">
         <strong class="w3-xlarge">Update Ticket</strong><br />
@@ -62,3 +237,17 @@
         </form>
         <br/>
         </div>
+        <hr Style="margin-bottom:10px; margin-top:10px" />
+        <div class="w3-row" >
+            <div class="w3-col s2" Style="margin-left:35px">
+                <form data-th-action="@{/infoArms}">
+                    <input class="w3-button w3-btn w3-button w3-round w3-gray"  type="submit" value="Back"/>
+                </form>
+            </div>
+        </div>
+        <br/>
+
+        
+    </body>
+</html>
+-->
